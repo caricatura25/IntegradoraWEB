@@ -18,6 +18,7 @@ import { SplashComponent } from './Component/splash/splash.component';
 import { TabInviComponent } from './Component/tab-invi/tab-invi.component';
 import { DispositivosComponent } from './Component/dispositivos/dispositivos.component';
 import { InterHumedadComponent } from './Component/inter-humedad/inter-humedad.component';
+import { InterControlesComponent } from './Component/inter-controles/inter-controles.component';
 //import { seg2 } from './seg2.guard';
 
 
@@ -29,6 +30,7 @@ const routes: Routes = [
     {path:'navadmin', component:AdminnavComponent},
     {path:'login', component:LoginComponent},
     {path:'Temp',component:CardTempComponent},
+    {path:'controles',component:InterControlesComponent},
     {path:'registro', component:RegistroComponent},
     {path:'Humedad',component:InterHumedadComponent},
     {path:'menu', component:MenuComponent},

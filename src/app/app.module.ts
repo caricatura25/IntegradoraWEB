@@ -25,6 +25,8 @@ import { DispositivosComponent } from './Component/dispositivos/dispositivos.com
 import { InterHumedadComponent } from './Component/inter-humedad/inter-humedad.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-temperatura.component';
+import { InterControlesComponent } from './Component/inter-controles/inter-controles.component';
+
 
 
 
@@ -48,7 +50,8 @@ import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-t
     TabInviComponent,
     DispositivosComponent,
     InterHumedadComponent,
-    InterTemperaturaComponent
+    InterTemperaturaComponent,
+    InterControlesComponent,
   ],
   imports: [
     BrowserModule,

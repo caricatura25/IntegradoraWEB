@@ -17,4 +17,8 @@ export class ServiciosService {
   humedad():Observable<any>{
     return this.http.get<any>(`${this.apiURL}sensors/humidity`)
   }
+
+  focos():Observable<any>{
+    return this.http.get<any>(`${this.apiURL}lights`)
+  }
 }
