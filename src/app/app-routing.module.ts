@@ -18,7 +18,11 @@ import { SplashComponent } from './Component/splash/splash.component';
 import { TabInviComponent } from './Component/tab-invi/tab-invi.component';
 import { DispositivosComponent } from './Component/dispositivos/dispositivos.component';
 import { InterHumedadComponent } from './Component/inter-humedad/inter-humedad.component';
+<<<<<<< HEAD
 import { InterControlesComponent } from './Component/inter-controles/inter-controles.component';
+=======
+import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-temperatura.component';
+>>>>>>> 884f2d8b7b18b33705f5d4deb68ac81764548f4e
 //import { seg2 } from './seg2.guard';
 
 
@@ -29,8 +33,12 @@ const routes: Routes = [
     {path:'carrusel', component:CarruselComponent},
     {path:'navadmin', component:AdminnavComponent},
     {path:'login', component:LoginComponent},
+<<<<<<< HEAD
     {path:'Temp',component:CardTempComponent},
     {path:'controles',component:InterControlesComponent},
+=======
+    {path:'Temp',component:InterTemperaturaComponent},
+>>>>>>> 884f2d8b7b18b33705f5d4deb68ac81764548f4e
     {path:'registro', component:RegistroComponent},
     {path:'Humedad',component:InterHumedadComponent},
     {path:'menu', component:MenuComponent},

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiciosService } from 'src/app/servicios.service';
 import { Humedad } from 'src/app/Interfaces/humedad';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-inter-humedad',
@@ -11,15 +11,16 @@ import { Router } from '@angular/router';
 export class InterHumedadComponent implements OnInit {
 
   public sensores:Array<Humedad>
-  constructor(private Temp: ServiciosService) { }
+  constructor(private Hum: ServiciosService) { }
 
   ngOnInit(): void {
     console.log("oninit")
   this.HUMEDAD()
   }
+
   HUMEDAD(){
     console.log("realizabdo peticion")
-    this.Temp.humedad().subscribe(data => {
+    this.Hum.humedad().subscribe(data => {
       console.log("hecho")
       this.sensores = data
       console.log(data)
@@ -28,5 +29,4 @@ export class InterHumedadComponent implements OnInit {
       console.log(error)
     });
   }
-  
 }

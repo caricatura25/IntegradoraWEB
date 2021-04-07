@@ -1,1 +1,4 @@
-<p>inter-temperatura works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="container">
+<app-card-temp [sensores]='sensor' *ngFor='let sensor of sensores'></app-card-temp>
+</div>

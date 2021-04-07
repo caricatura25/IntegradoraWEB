@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class CardHumedadComponent implements OnInit {
   @Input() sensores:Humedad
-  
+
   constructor() { }
 
   ngOnInit(): void {
