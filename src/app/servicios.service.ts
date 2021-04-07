@@ -11,8 +11,8 @@ export class ServiciosService {
   apiURL=environment.apiURL
   constructor(private http:HttpClient) { }
   
-  temperatur():Observable<any>{
-    return this.http.get<any>(`${this.apiURL}temperature`)
+  temperatura():Observable<any>{
+    return this.http.get<any>(`${this.apiURL}sensors/temperature`)
   }
   humedad():Observable<any>{
     return this.http.get<any>(`${this.apiURL}sensors/humidity`)

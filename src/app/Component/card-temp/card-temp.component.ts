@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input,OnInit } from '@angular/core';
 import { Temperatura } from 'src/app/Interfaces/temperatura';
-import { Router } from '@angular/router';
-//import { ServiciosService } from 'src/app/servicios.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./card-temp.component.css']
 })
 export class CardTempComponent implements OnInit {
+  @Input() sensores:Temperatura
   constructor() {
   }
 
