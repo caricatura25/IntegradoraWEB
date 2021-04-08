@@ -1,0 +1,17 @@
+<app-nav-bar></app-nav-bar>
+<br><br>
+<app-nav-bar></app-nav-bar>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <table class="table table-success table-striped text-center" *ngIf='invitados'>
+                <tr *ngFor="let invitado of invitados">
+                    <th scope="col">{{invitado.nombre}}</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
