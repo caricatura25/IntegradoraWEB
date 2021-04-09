@@ -5,5 +5,6 @@ export const environment = {
   idpost:0,
   posttitulo: "",
   tokenstatus: false,
-  sessionstatus: false
+  session: false,
+  invited: false
 };

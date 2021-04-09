@@ -11,6 +11,7 @@ import { ServiciosService } from 'src/app/servicios.service';
 export class RegistroComponent implements OnInit {
   request: Object
   registroForm:FormGroup; //Variable para validar forms
+  
   constructor(private fb:FormBuilder, private api: ServiciosService, public router: Router) {
     this.crForm();
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServiciosService } from 'src/app/servicios.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-login',
@@ -27,10 +28,13 @@ export class LoginComponent implements OnInit {
     this.setLogin();
     const request = { email: this.email_nombre, password: this.password };
     this.api.login(request).subscribe(data => {
-      this.api.setToken(data);
+      this.api.setToken(data.token);
+      environment.session=true
       console.log("Sea iniciado sesion por admin")
       console.log(data)
       this.router.navigateByUrl('/menu');
+      console.log("show token")
+      console.log(data.token)
     }, error =>{
       this.notadmin = true
       console.log("Login error admin")
@@ -56,6 +60,7 @@ export class LoginComponent implements OnInit {
       const request = { nombre: this.email_nombre, password: this.password };
       this.api.login_invited(request).subscribe(data => {
         if(data.status){
+          environment.invited=true 
           console.log("Sea iniciado sesion por invitado")
           console.log(data)
           this.router.navigateByUrl('/menu');
