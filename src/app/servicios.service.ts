@@ -4,6 +4,7 @@ import { HttpClient} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { User } from './Interfaces/user';
 import { CookieService } from "ngx-cookie-service";
+import { Invitado } from './Interfaces/invitado';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,12 +12,16 @@ export class ServiciosService {
   apiURL=environment.apiURL
   constructor(private http:HttpClient, private cookies: CookieService) { }
 
+  register(request: Object):Observable<any>{
+    return this.http.post<User>(`${this.apiURL}register`, request)
+  }
+
   login(request: Object):Observable<any>{
     return this.http.post<User>(`${this.apiURL}login`, request)
   }
 
   login_invited(request: Object):Observable<any>{
-    return this.http.post<User>(`${this.apiURL}login/invited`, request)
+    return this.http.post<Invitado>(`${this.apiURL}login/invited`, request)
   }
 
   setToken(token) {
