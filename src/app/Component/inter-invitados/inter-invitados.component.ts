@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Invitado } from 'src/app/Interfaces/invitado';
 import { ServiciosService } from 'src/app/servicios.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-inter-invitados',
@@ -9,11 +12,12 @@ import { ServiciosService } from 'src/app/servicios.service';
 })
 export class InterInvitadosComponent implements OnInit {
 
-  constructor(private api: ServiciosService) { }
+  constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
 
   public invi_pendien:Array<Invitado>
 
   ngOnInit(): void {
+    this.checkToken()
     console.log("OnInit")
     this.invi_pendientes()
   }
@@ -32,6 +36,26 @@ export class InterInvitadosComponent implements OnInit {
 
   invitados(){
 
+  }
+
+  checkToken(){
+    console.log("Verificando Token-- CheckToken()")
+    
+    this.api.check().subscribe(data => {
+        if(data.status && environment.session){
+            console.log("token vaido")
+        }else{
+            console.log("no valido")
+            environment.session= false
+            this.cookies.delete("token")
+            this.router.navigateByUrl('/login');
+        }
+    }, error =>{
+        alert("No se pudo completar el registro")
+        console.log("Registro error")
+        console.log(error)
+    });
+    
   }
 
 }

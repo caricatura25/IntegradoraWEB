@@ -43,4 +43,8 @@ export class ServiciosService {
   focos():Observable<any>{
     return this.http.get<any>(`${this.apiURL}lights`)
   }
+
+  check():Observable<any>{
+    return this.http.get<any>(`${this.apiURL}check`)
+  }
 }

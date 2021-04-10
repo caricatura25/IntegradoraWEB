@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ServiciosService } from 'src/app/servicios.service';
 import { environment } from 'src/environments/environment.prod';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
   login() {
@@ -71,5 +73,6 @@ export class LoginComponent implements OnInit {
         console.log(error)
       });
   }
+
 
 }
