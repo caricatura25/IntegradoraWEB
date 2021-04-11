@@ -40,6 +40,22 @@ export class ServiciosService {
     return this.http.get<any>(`${this.apiURL}sensors/humidity`)
   }
 
+  pending_invited():Observable<any>{
+    return this.http.get<any>(`${this.apiURL}pending/invited`)
+  }
+
+  invited():Observable<any>{
+    return this.http.get<any>(`${this.apiURL}invited`)
+  }
+
+  deleteinvited(request: Object):Observable<any>{
+    return this.http.post<User>(`${this.apiURL}delete/invited`,request)
+  }
+
+  acceptinvited(request: Object):Observable<any>{
+    return this.http.post<User>(`${this.apiURL}request/invited`,request)
+  }
+
   focos():Observable<any>{
     return this.http.get<any>(`${this.apiURL}lights`)
   }

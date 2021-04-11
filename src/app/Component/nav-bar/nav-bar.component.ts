@@ -19,8 +19,10 @@ export class NavBarComponent implements OnInit {
 
   cerrarSesion(){
     console.log("Cerrando Sesion...")
+
     this.cookies.delete("token")
     environment.session=false
+
     console.log("Token eliminado")
     this.router.navigateByUrl('/login');
   }
