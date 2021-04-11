@@ -1,3 +1,4 @@
-.background{
+.background {
     background-image: url("../../../assets/img/fondologin.jpg");
-}
+    background-size: width height;
+    }
