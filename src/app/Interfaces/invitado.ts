@@ -4,5 +4,6 @@ export interface Invitado {
     nombre: string,
     password: string,
     is_accept: number,
-    created_at: string
+    created_at: string,
+    updated_at: string
 }

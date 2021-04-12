@@ -5,7 +5,7 @@
 <div class="container" *ngIf="!invited">
     <div class="row">
         <div class="offset-md-3 col-md-6">
-            <h3 class="text-center">Invitados pendientes</h3><br>
+            <h3 class="text-center">Invitados pedientes</h3><br>
             <table class="table text-center table-striped" *ngIf='invi_pendien'>
                 <thead>
                     <tr>
@@ -17,7 +17,7 @@
                 <tbody>
                     <tr *ngFor="let invi_pend of invi_pendien">
                         <td> {{invi_pend.nombre}}</td>
-                        <td>{{invi_pend.created_at}}</td>
+                        <td>{{invi_pend.created_at |date:"short"}}</td>
                         <td>
                             <button type="button" class="btn btn-outline-success" (click)="aceptarInvitado(invi_pend)">Aceptar</button>&nbsp;
                             <button type="button" class="btn btn-outline-danger" (click)="eliminarInvitado(invi_pend)" >Eliminar</button>
@@ -35,12 +35,14 @@
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
+                        <th scope="col">Fecha</th>
                         <th scope="col">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let invitado of misinvitados">
                         <td>{{invitado.nombre}}</td>
+                        <td>{{invitado.updated_at |date:"short"}}</td>
                         <td><button type="button" class="btn btn-outline-danger" (click)="eliminarInvitado(invitado)" >Eliminar</button></td>
                     </tr>
                 </tbody>
