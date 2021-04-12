@@ -25,6 +25,7 @@ import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-t
 
 
 const routes: Routes = [
+    {path:'', component:LoginComponent},
     {path:'navbar', component:NavBarComponent},
     {path:'splash',component:SplashComponent},
     {path:'carrusel', component:CarruselComponent},

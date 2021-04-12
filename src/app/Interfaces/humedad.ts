@@ -1,5 +1,5 @@
 export interface Humedad {
-    id: string
+    dispositivo_id: number
     nombre: string
     descripcion: string
     pin: string

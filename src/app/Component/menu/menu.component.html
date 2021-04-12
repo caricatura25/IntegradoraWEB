@@ -14,9 +14,10 @@
       </div>
     </div>
     <div class="col">
-      <div class="card" style="width: 18rem;" *ngIf="!invited">
-      <img src="../../../assets/img/cochera.jpeg" class="card-img-top" height="190px;" alt="..." routerLink="/cochera">
-      </div>
+      <div class="card" style="width: 18rem;" >
+      <img src="../../../assets/img/cochera.jpeg" *ngIf="!invited" class="card-img-top" height="190px;" alt="..." routerLink="/cochera">
+      <img src="../../../assets/img/humedad.jpg"  *ngIf="invited"class="card-img-top" height="190px;" alt="..." routerLink="/Humedad">
+    </div>
     </div>
   </div>
 </div>
@@ -25,9 +26,9 @@
 <br>
 
 <div class="container">
-  <div class="row ">
+  <div class="row">
     <div class="col">       
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 18rem;" *ngIf="!invited">
         <img src="../../../assets/img/humedad.jpg" class="card-img-top" height="190px;" alt="..." routerLink="/Humedad">
       </div>
     </div>
@@ -35,6 +36,9 @@
       <div class="card" style="width: 18rem;" *ngIf="!invited">
         <img src="../../../assets/img/alarma.png" class="card-img-top" height="190px;" alt="..." routerLink="/alarma">
       </div>
+    </div>
+    <div class="col">
+      
     </div>
   </div>
 </div>

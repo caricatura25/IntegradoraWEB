@@ -52,6 +52,10 @@ export class ServiciosService {
     return this.http.post<User>(`${this.apiURL}delete/invited`,request)
   }
 
+  deletedevice(request: Object):Observable<any>{
+    return this.http.post<User>(`${this.apiURL}delete/device`,request)
+  }
+
   acceptinvited(request: Object):Observable<any>{
     return this.http.post<User>(`${this.apiURL}request/invited`,request)
   }

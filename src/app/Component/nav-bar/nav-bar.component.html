@@ -19,13 +19,13 @@
           <a class="nav-link active" aria-current="page"  routerLink="/invitados" *ngIf="!invited">Invitados</a>
         </li>
       </ul>
-      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" >
-        <li class="nav-item dropdown">
+      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex bg-secondary" >
+        <li class="nav-item dropdown bg-secondary">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Bienvenido: {{name}}
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" (click)="cerrarSesion()">Cerrar Sesion</a>
+            <div class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item " (click)="cerrarSesion()">Cerrar Sesion</a>
             </div>
         </li>
     </ul>

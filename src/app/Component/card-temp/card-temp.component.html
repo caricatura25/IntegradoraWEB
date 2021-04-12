@@ -8,7 +8,7 @@
                     <p style="text-indent: 10em;">{{ sensores.nombre }}</p>
                     </div>
             </div>
-            <button *ngIf="!invited" type="button" class="btn btn-outline-danger offset-md-10 col-md-2">Eliminar sensor</button>
+            <button *ngIf="!invited" type="button" class="btn btn-outline-danger offset-md-10 col-md-2" (click)="eliminarTemperatura(sensores)" >Eliminar sensor</button>
                 <p style="text-indent: 15em;">{{ sensores.descripcion }}</p>
         </div>
     </div>
