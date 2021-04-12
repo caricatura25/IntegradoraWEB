@@ -12,6 +12,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+<<<<<<< HEAD
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -38,5 +39,26 @@
               </li>
           </ul>
             
+=======
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/dispositivos" *ngIf="!invited">Añadir dspositivo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page"  routerLink="/invitados" *ngIf="!invited">Invitados</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex bg-secondary" >
+        <li class="nav-item dropdown bg-secondary">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Bienvenido: {{name}}
+            </a>
+            <div class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item " (click)="cerrarSesion()">Cerrar Sesion</a>
+            </div>
+        </li>
+    </ul>
+>>>>>>> 534cee9dd7ae2bf8282d9054636852624e3d1bc6
     </div>
 </nav>

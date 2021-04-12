@@ -1,15 +1,17 @@
 <br>
 <div class="col-md-12">
     <div class="card col-md-12">
-        <div class="card-body row">
+        <div class="card-body ">
             <div class="d-flex flex-row bd-highlight mb-12">
                     <h1 class="bd-highlight">28°</h1>
                     <div class="d-flex .justify-content-md-center">
                     <p style="text-indent: 10em;">{{ sensores.nombre }}</p>
                     </div>
             </div>
-            <button *ngIf="!invited" type="button" class="btn btn-outline-danger offset-md-10 col-md-2" (click)="eliminarTemperatura(sensores)" >Eliminar sensor</button>
                 <p style="text-indent: 15em;">{{ sensores.descripcion }}</p>
+        </div>
+        <div class="card-footer text-right">
+            <button *ngIf="!invited" type="button" class="btn btn-outline-danger offset-md-10 col-md-2" (click)="eliminarTemperatura(sensores)" >Eliminar sensor</button>
         </div>
     </div>
 </div>    
