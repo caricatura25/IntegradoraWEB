@@ -1,34 +1,41 @@
 
-<nav
-   
- class="navbar navbar-expand-lg navbar-dark bg-secondary">
- <a class="navbar-brand" href="#">
-  <img src="../../../assets/img/logo.png" alt="Logo" style="width:50px;">
-</a>
-  <div class="container-fluid">
-    <a class="navbar-brand"  routerLink="/menu">Inicio</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand" routerLink="/">Inicio</a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/dispositivos" *ngIf="!invited">Dispositivos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page"  routerLink="/invitados" *ngIf="!invited">Invitados</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex bg-secondary" >
-        <li class="nav-item dropdown bg-secondary">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Bienvenido: {{name}}
-            </a>
-            <div class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item " (click)="cerrarSesion()">Cerrar Sesion</a>
-            </div>
-        </li>
-    </ul>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item " *ngIf="session">
+              <a class="navbar-brand"  routerLink="/menu">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="/dispositivos" *ngIf="!invited">Dispositivos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page"  routerLink="/invitados" *ngIf="!invited">Invitados</a>
+            </li>
+            
+            </ul>
+
+            <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" *ngIf="!session">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Bienvenido: {{username}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <!-- <a class="dropdown-item" routerLink="/editar" >Editar usuario</a> -->
+                    <!-- <div class="dropdown-divider"></div> -->
+                            <a class="dropdown-item" routerLink="/" (click)="eventoCerrarSesion()" >Cerrar Sesion</a>
+                    </div>
+                </li>
+            </ul>
+            
     </div>
-  </div>
 </nav>
