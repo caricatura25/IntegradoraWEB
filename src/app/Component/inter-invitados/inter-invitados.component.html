@@ -35,12 +35,14 @@
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
+                        <th scope="col">Fecha</th>
                         <th scope="col">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let invitado of misinvitados">
                         <td>{{invitado.nombre}}</td>
+                        <td>{{invitado.updated_at |date:"short"}}</td>
                         <td><button type="button" class="btn btn-outline-danger" (click)="eliminarInvitado(invitado)" >Eliminar</button></td>
                     </tr>
                 </tbody>
