@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class ControlesComponent implements OnInit {
   @Input() focos:Foco
+  public invited:Boolean =  environment.invited;
   constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
 
   ngOnInit(): void {

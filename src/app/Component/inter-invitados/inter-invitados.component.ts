@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./inter-invitados.component.css']
 })
 export class InterInvitadosComponent implements OnInit {
-
+  public invited:Boolean =  environment.invited;
   constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
   
   public invi_pendien:Array<Invitado>

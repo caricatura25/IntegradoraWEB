@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./inter-temperatura.component.css']
 })
 export class InterTemperaturaComponent implements OnInit {
-  
+  public invited:Boolean =  environment.invited;
   public sensores:Array<Temperatura>
   constructor(private Temp: ServiciosService,public router: Router,public cookies:CookieService) { }
 

@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./cochera.component.css']
 })
 export class CocheraComponent implements OnInit {
-
+  public invited:Boolean =  environment.invited;
   constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
 
   ngOnInit(): void {

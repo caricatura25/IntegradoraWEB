@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./inter-controles.component.css']
 })
 export class InterControlesComponent implements OnInit {
-
+  public invited:Boolean =  environment.invited;
   constructor(private api: ServiciosService,private cookies: CookieService,public router: Router) { }
 
   ngOnInit(): void {

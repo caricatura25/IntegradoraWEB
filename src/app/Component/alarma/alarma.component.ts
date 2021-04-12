@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./alarma.component.css']
 })
 export class AlarmaComponent implements OnInit {
-
+  public invited:Boolean =  environment.invited;
   constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
 
   ngOnInit(): void {

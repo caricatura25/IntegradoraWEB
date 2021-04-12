@@ -10,7 +10,9 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
+  public invited:Boolean =  environment.invited;
+  public name:String =  environment.name;
+  
   constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
 
   ngOnInit(): void {
@@ -22,6 +24,7 @@ export class NavBarComponent implements OnInit {
 
     this.cookies.delete("token")
     environment.invited=false
+    environment.name=null
 
     console.log("Token eliminado")
     this.router.navigateByUrl('/login');
@@ -32,6 +35,7 @@ export class NavBarComponent implements OnInit {
     
     this.api.check().subscribe(data => {
         if(data.status){
+          environment.name = data.user.nombre
             console.log("Autorizado User")
         }else if(environment.invited){
             console.log("Autorizado Invitado")

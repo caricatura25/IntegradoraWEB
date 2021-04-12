@@ -10,7 +10,7 @@
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     </div>
             </div>
-            <button type="button" class="btn btn-outline-danger offset-md-10 col-md-2">Eliminar sensor</button>
+            <button *ngIf="!invited" type="button" class="btn btn-outline-danger offset-md-10 col-md-2">Eliminar sensor</button>
             <h6 style="text-indent: 15em;"> {{sensores.descripcion}}</h6>
         </div>
     </div>

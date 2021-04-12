@@ -12,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./inter-humedad.component.css']
 })
 export class InterHumedadComponent implements OnInit {
-
+  public invited:Boolean =  environment.invited;
   public sensores:Array<Humedad>
   constructor(private Hum: ServiciosService,private cookies: CookieService,public router: Router) { }
 
