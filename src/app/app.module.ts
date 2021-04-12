@@ -23,12 +23,13 @@ import { RegInvitadoComponent } from './Component/reg-invitado/reg-invitado.comp
 import { TabInviComponent } from './Component/tab-invi/tab-invi.component';
 import { DispositivosComponent } from './Component/dispositivos/dispositivos.component';
 import { InterHumedadComponent } from './Component/inter-humedad/inter-humedad.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-temperatura.component';
 import { InterControlesComponent } from './Component/inter-controles/inter-controles.component';
 import { InterInvitadosComponent } from './Component/inter-invitados/inter-invitados.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from "ngx-cookie-service";
+import { TokenService } from './Interceptores/token.service';
 
 
 
@@ -67,6 +68,7 @@ import { CookieService } from "ngx-cookie-service";
   ],
   providers: [
     CookieService,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

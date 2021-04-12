@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { ServiciosService } from 'src/app/servicios.service';
+import { environment } from 'src/environments/environment.prod';
+
 
 @Component({
   selector: 'app-login',
@@ -14,11 +17,12 @@ export class LoginComponent implements OnInit {
   loginForm:FormGroup; //Variable para validar forms
   notadmin: Boolean
   
-  constructor(private api: ServiciosService,private fb:FormBuilder,public router: Router) {
+  constructor(private api: ServiciosService,private fb:FormBuilder,public router: Router,private cookies: CookieService) {
     this.logForm();
   }
 
   ngOnInit(): void {
+    
   }
 
   login() {
@@ -27,10 +31,10 @@ export class LoginComponent implements OnInit {
     this.setLogin();
     const request = { email: this.email_nombre, password: this.password };
     this.api.login(request).subscribe(data => {
-      this.api.setToken(data);
+      this.api.setToken(data.token);
       console.log("Sea iniciado sesion por admin")
       console.log(data)
-      this.router.navigateByUrl('/menu');
+      this.checkToken()
     }, error =>{
       this.notadmin = true
       console.log("Login error admin")
@@ -56,6 +60,8 @@ export class LoginComponent implements OnInit {
       const request = { nombre: this.email_nombre, password: this.password };
       this.api.login_invited(request).subscribe(data => {
         if(data.status){
+          environment.invited=true 
+          environment.name = String(request.nombre) 
           console.log("Sea iniciado sesion por invitado")
           console.log(data)
           this.router.navigateByUrl('/menu');
@@ -66,5 +72,30 @@ export class LoginComponent implements OnInit {
         console.log(error)
       });
   }
+
+  checkToken(){
+    console.log("Verificando Token-- CheckToken()")
+    
+    this.api.check().subscribe(data => {
+        if(data.status){
+            environment.name = data.user.nombre
+            console.log("Autorizado User")
+            this.router.navigateByUrl('/menu');
+        }else if(environment.invited){
+            console.log("Autorizado Invitado")
+        }else{
+            console.log("No autorizado")
+            environment.invited = false
+            this.cookies.delete("token")
+            this.router.navigateByUrl('/login');
+        }
+    }, error =>{
+        alert("No se pudo completar el registro")
+        console.log("Registro error")
+        console.log(error)
+    });
+    
+  }
+
 
 }

@@ -1,9 +1,10 @@
 export const environment = {
   production: true,
   apiURL: 'http://127.0.0.1:3333/',
-  username: "",
+  name: null,
   idpost:0,
   posttitulo: "",
   tokenstatus: false,
-  sessionstatus: false
+  session: false,
+  invited: false
 };

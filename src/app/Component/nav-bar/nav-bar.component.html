@@ -13,21 +13,22 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/dispositivos">Dispositivos</a>
+          <a class="nav-link active" aria-current="page" routerLink="/dispositivos" *ngIf="!invited">Dispositivos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link"  ></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page"  routerLink="/invitados">Invitados</a>
+          <a class="nav-link active" aria-current="page"  routerLink="/invitados" *ngIf="!invited">Invitados</a>
         </li>
       </ul>
-    </div>
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" routerLink="/login" (onClick)="cerrarSesion()" > Cerrar Sesión</a>
-      </li>
+      <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" >
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Bienvenido: {{name}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" (click)="cerrarSesion()">Cerrar Sesion</a>
+            </div>
+        </li>
     </ul>
- 
+    </div>
   </div>
 </nav>
