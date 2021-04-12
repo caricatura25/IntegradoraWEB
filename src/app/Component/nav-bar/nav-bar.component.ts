@@ -21,7 +21,7 @@ export class NavBarComponent implements OnInit {
     console.log("Cerrando Sesion...")
 
     this.cookies.delete("token")
-    environment.session=false
+    environment.invited=false
 
     console.log("Token eliminado")
     this.router.navigateByUrl('/login');
@@ -31,11 +31,13 @@ export class NavBarComponent implements OnInit {
     console.log("Verificando Token-- CheckToken()")
     
     this.api.check().subscribe(data => {
-        if(data.status && environment.session){
-            console.log("token vaido")
+        if(data.status){
+            console.log("Autorizado User")
+        }else if(environment.invited){
+            console.log("Autorizado Invitado")
         }else{
-            console.log("no valido")
-            environment.session= false
+            console.log("No autorizado")
+            environment.invited = false
             this.cookies.delete("token")
             this.router.navigateByUrl('/login');
         }

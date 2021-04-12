@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     const request = { email: this.email_nombre, password: this.password };
     this.api.login(request).subscribe(data => {
       this.api.setToken(data.token);
-      environment.session=true
+
       console.log("Sea iniciado sesion por admin")
       console.log(data)
       this.router.navigateByUrl('/menu');
