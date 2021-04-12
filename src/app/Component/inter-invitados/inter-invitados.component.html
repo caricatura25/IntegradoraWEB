@@ -17,7 +17,7 @@
                 <tbody>
                     <tr *ngFor="let invi_pend of invi_pendien">
                         <td> {{invi_pend.nombre}}</td>
-                        <td>{{invi_pend.created_at}}</td>
+                        <td>{{invi_pend.created_at |date:"short"}}</td>
                         <td>
                             <button type="button" class="btn btn-outline-success" (click)="aceptarInvitado(invi_pend)">Aceptar</button>&nbsp;
                             <button type="button" class="btn btn-outline-danger" (click)="eliminarInvitado(invi_pend)" >Eliminar</button>
@@ -35,12 +35,14 @@
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
+                        <th scope="col">Fecha</th>
                         <th scope="col">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let invitado of misinvitados">
                         <td>{{invitado.nombre}}</td>
+                        <td>{{invi_pend.created_at |date:"short"}}</td>
                         <td><button type="button" class="btn btn-outline-danger" (click)="eliminarInvitado(invitado)" >Eliminar</button></td>
                     </tr>
                 </tbody>
