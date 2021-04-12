@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ServiciosService } from 'src/app/servicios.service';
@@ -38,5 +40,5 @@ export class AlarmaComponent implements OnInit {
     });
     
   }
-
+ 
 }
