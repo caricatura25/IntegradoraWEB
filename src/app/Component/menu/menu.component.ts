@@ -10,9 +10,9 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  
+  public invited:Boolean =  environment.invited;
   constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
-
+  
   ngOnInit(): void {
     this.checkToken()
   }
@@ -21,11 +21,13 @@ export class MenuComponent implements OnInit {
     console.log("Verificando Token-- CheckToken()")
     
     this.api.check().subscribe(data => {
-        if(data.status && environment.session){
-            console.log("token vaido")
+        if(data.status){
+            console.log("Autorizado User")
+        }else if(environment.invited){
+            console.log("Autorizado Invitado")
         }else{
-            console.log("no valido")
-            environment.session= false
+            console.log("No autorizado")
+            environment.invited = false
             this.cookies.delete("token")
             this.router.navigateByUrl('/login');
         }
