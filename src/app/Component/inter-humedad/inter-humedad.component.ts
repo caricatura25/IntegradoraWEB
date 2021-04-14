@@ -14,10 +14,12 @@ import { CookieService } from 'ngx-cookie-service';
 export class InterHumedadComponent implements OnInit {
   public invited:Boolean =  environment.invited;
   public sensores:Array<Humedad>
+  public datos:Array<Dato>
   constructor(private Hum: ServiciosService,private cookies: CookieService,public router: Router) { }
 
   ngOnInit(): void {
   this.checkToken()
+  this.peticiondatos()
   console.log("oninit")
   this.HUMEDAD()
   }
@@ -33,7 +35,19 @@ export class InterHumedadComponent implements OnInit {
       console.log(error)
     });
   }
-
+  
+  peticiondatos(){
+    console.log("realizabdo peticion")
+    const request = {dispositivo_id: 4}
+    this.api.datos(request).subscribe(data => {
+      console.log("hecho")
+      this.datos = data.registros
+      console.log(data)
+    }, error =>{
+      console.log("Error peticion datos Temperatura")
+      console.log(error)
+    });
+  }
   checkToken(){
     console.log("Verificando Token-- CheckToken()")
     

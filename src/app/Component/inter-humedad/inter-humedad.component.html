@@ -1,4 +1,32 @@
+<div class="backgrounds">
 <app-nav-bar></app-nav-bar>
+<br>
 <div class="container">
-<app-card-humedad [sensores]='sensor' *ngFor='let sensor of sensores'></app-card-humedad>
+    <div class="h1">   
+    <h1 class="bd-highlight">48%</h1>
+    </div> 
+    </div>
+<div class="h5">
+    <div class="h5">
+    <h5 class="bd-highlight">Humedad</h5>
+</div>
+</div>
+<div class="row offset-md-5 col-md-7">
+    <table class="table text-center table-light table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Temperatura</th>
+                <th scope="col">Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dato of datos">
+                <td>1</td>
+                <td>{{dato.dato}}</td>
+                <td>{{dato.created_at |date:"short"}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </div>
