@@ -2,22 +2,32 @@
 
 <div class="background">
     <app-nav-bar></app-nav-bar>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2"><h1>28°</h1></div>
-        </div><div class="row"><br><br><br><br><br><br></div>
+  
+            <div class="container">
+                <div class="h1">   
+                <h1 class="bd-highlight">20°c</h1>
+                </div> 
+                </div>
+            <div class="h5">
+                <div class="h5">
+                <h5 class="bd-highlight">Temperatura</h5>
+            </div>
+            </div>
+            <div class="container">
+                <div class="row">
+        </div><div class="row"><br><br><br><br></div>
         <div class="row offset-md-5 col-md-7">
             <table class="table text-center table-light table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                       
                         <th scope="col">Temperatura</th>
                         <th scope="col">Fecha</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let dato of datos">
-                        <td>1</td>
+                       
                         <td>{{dato.dato}}</td>
                         <td>{{dato.created_at |date:"short"}}</td>
                     </tr>

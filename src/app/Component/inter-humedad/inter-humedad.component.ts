@@ -49,6 +49,8 @@ export class InterHumedadComponent implements OnInit {
       console.log(error)
     });
   }
+
+  
   checkToken(){
     console.log("Verificando Token-- CheckToken()")
     
