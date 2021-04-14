@@ -20,7 +20,7 @@ export class CardTempComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  eliminarTemperatura(sensor){
+  /* eliminarTemperatura(sensor){
     const request = {dispositivo_id: sensor.dispositivo_id}
     console.log(request)
     this.api.deletedevice(request).subscribe(data => {
@@ -31,6 +31,6 @@ export class CardTempComponent implements OnInit {
       console.log("Eliminar Temperatura error")
       console.log(error)
     }); 
-  }
+  } */
 }
 

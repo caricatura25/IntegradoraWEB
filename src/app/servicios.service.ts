@@ -36,6 +36,10 @@ export class ServiciosService {
     return this.http.get<any>(`${this.apiURL}sensors/temperature`)
   }
 
+  datos(request: Object):Observable<any>{
+    return this.http.post<User>(`${this.apiURL}show/last`,request)
+  }
+
   humedad():Observable<any>{
     return this.http.get<any>(`${this.apiURL}sensors/humidity`)
   }

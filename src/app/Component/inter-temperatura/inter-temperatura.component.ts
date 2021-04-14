@@ -4,6 +4,7 @@ import { Temperatura } from 'src/app/Interfaces/temperatura';
 import { environment } from 'src/environments/environment.prod';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { Dato } from 'src/app/Interfaces/dato';
 
 
 @Component({
@@ -12,24 +13,25 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./inter-temperatura.component.css']
 })
 export class InterTemperaturaComponent implements OnInit {
-  public invited:Boolean =  environment.invited;
-  public sensores:Array<Temperatura>
-  constructor(private Temp: ServiciosService,public router: Router,public cookies:CookieService) { }
+  public invited:Boolean = environment.invited;
+  public datos:Array<Dato>
+  constructor(private api: ServiciosService,public router: Router,public cookies:CookieService) { }
 
   ngOnInit(): void {
     this.checkToken()
     console.log("oninit")
-    this.TEMPERATURA()
+    this.peticiondatos()
   }
   
-  TEMPERATURA(){
+  peticiondatos(){
     console.log("realizabdo peticion")
-    this.Temp.temperatura().subscribe(data => {
+    const request = {dispositivo_id: 4}
+    this.api.datos(request).subscribe(data => {
       console.log("hecho")
-      this.sensores = data
+      this.datos = data.registros
       console.log(data)
     }, error =>{
-      console.log("Error peticion sensores Temperatura")
+      console.log("Error peticion datos Temperatura")
       console.log(error)
     });
   }
@@ -38,7 +40,7 @@ export class InterTemperaturaComponent implements OnInit {
   checkToken(){
     console.log("Verificando Token-- CheckToken()")
     
-    this.Temp.check().subscribe(data => {
+    this.api.check().subscribe(data => {
         if(data.status){
             console.log("Autorizado User")
         }else if(environment.invited){
