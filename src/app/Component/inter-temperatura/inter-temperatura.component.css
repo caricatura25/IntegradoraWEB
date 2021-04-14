@@ -1,0 +1,16 @@
+.background {
+    background-image: url("../../../assets/img/fondotemperatura.jpeg");
+    min-height: 100%;
+    min-width: 800px;
+    /* Escalamiento proporcional */
+    width: 100%;
+    height: auto;
+    /* Posicionamiento */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+h1 { font-size: 200% }
+h1 { color: #F7F4F3; }
+h5 { font-size: 400% }
+h5 { color: #F7F4F3; }
