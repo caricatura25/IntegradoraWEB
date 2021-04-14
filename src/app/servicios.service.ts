@@ -35,9 +35,16 @@ export class ServiciosService {
   temperatura():Observable<any>{
     return this.http.get<any>(`${this.apiURL}sensors/temperature`)
   }
+  pines():Observable<any>{
+    return this.http.get<any>(`${this.apiURL}pines`)
+  }
 
   datos(request: Object):Observable<any>{
     return this.http.post<User>(`${this.apiURL}show/last`,request)
+  }
+
+  device(request: Object):Observable<any>{
+    return this.http.post<User>(`${this.apiURL}device`,request)
   }
 
   humedad():Observable<any>{

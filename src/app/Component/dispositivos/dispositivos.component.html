@@ -2,33 +2,31 @@
 <div class="container" *ngIf="!invited">
     <div class="row">
     <div class="offset-md-3 col-md-6">
-<form>
+<form [formGroup] = "dispositivoForm" (ngSubmit)="peticiondispositivo()" autocomplete = "on">
     <div class="mb-3"></div>
       <label for="exampleInputEmail1" class="form-label">Nombre</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder = "Ingrese nombre"formControlName = "nombre" aria-describedby="emailHelp">
     
     <div class="mb-3">
         <label for="exampleInputdescription" class="form-label">Descripción</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder = "Ingrese descripcion"formControlName = "descripcion">
       </div>
     <div class="mb-3">
         <label class="form-check-label" for="form-select">Tipo</label>
         <br>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option selected></option>
-            <option value="Foco">Foco</option>
+        <select class="form-control" id="exampleFormControlSelect1" formControlName = "tipo">
+            <option value="Foco" selected>Foco</option>
           </select>
       </div>
       <div class="mb-3">
         <label class="form-check-label" for="form-select">PIN</label>
         <br>
-        <select class="form-control" id="exampleFormControlSelect1">
-          <option selected></option>
-            <option value="1"></option>
-          </select>
+        <select class="form-control" id="exampleFormControlSelect1" formControlName = "pin">
+          <option *ngFor="let pin of pines" [value]="pin">{{pin}}</option>
+        </select>
       </div>
  
-    <button type="submit" class="btn btn-primary">Añadir</button>
+    <button type="submit" class="btn btn-outline-primary btn-block">Añadir dispositivo</button>
   </form>
 </div>
 </div>

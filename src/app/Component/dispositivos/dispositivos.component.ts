@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ServiciosService } from 'src/app/servicios.service';
@@ -11,10 +12,60 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class DispositivosComponent implements OnInit {
   public invited:Boolean =  environment.invited;
-  constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
+  public pines:Array<Number>
+  dispositivoForm:FormGroup; 
+  request: Object
+  constructor(private fb:FormBuilder,private cookies: CookieService,public router: Router,private api: ServiciosService) { 
+    this.crForm();
+  }
 
   ngOnInit(): void {
     this.checkToken()
+    this.peticionpines()
+  }
+  peticionpines(){
+    this.api.pines().subscribe(data => {
+      this.pines = data
+      console.log(data)
+    }, error =>{
+      console.log("Error peticiones pines")
+      console.log(error)
+    });
+  }
+
+  peticiondispositivo(){
+    this.setdispositivo();
+    console.log(this.request)
+    this.api.device(this.request).subscribe(data => {
+      console.log("Se añadio nuevo dispositivo")
+      console.log(data)
+      this.router.navigateByUrl('/controles');
+    }, error =>{
+      console.log("Error peticiones add device")
+      console.log(error)
+    }); 
+  }
+
+
+  setdispositivo() {
+    var x = this.dispositivoForm.get('pin').value
+    var y: number = +x;
+    this.request = {
+      nombre: this.dispositivoForm.get('nombre').value,
+      descripcion: this.dispositivoForm.get('descripcion').value,
+      tipo: this.dispositivoForm.get('tipo').value,
+      pin: y
+    }
+  }
+
+    //Validor Formulario
+  crForm(): void {
+    this.dispositivoForm = this.fb.group({
+      nombre: ['',[Validators.required]],
+      descripcion: ['',[Validators.required]],
+      tipo: ['',[Validators.required]],
+      pin: ['',[Validators.required]]
+    });
   }
 
   checkToken(){
