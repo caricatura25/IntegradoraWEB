@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ServiciosService } from 'src/app/servicios.service';
 import { environment } from 'src/environments/environment.prod';
+import  {  SocketIoModule ,  SocketIoConfig  }  from  'ngx-socket-io' ;
+import ws from '@adonisjs/websocket-client';
+
 
 
 @Component({
