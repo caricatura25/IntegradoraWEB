@@ -39,7 +39,7 @@ export class InterHumedadComponent implements OnInit {
   
   peticiondatos(){
     console.log("realizabdo peticion")
-    const request = {dispositivo_id: 4}
+    const request = {dispositivo_id: 7}
     this.Hum.datos(request).subscribe(data => {
       console.log("hecho")
       this.datos = data.registros

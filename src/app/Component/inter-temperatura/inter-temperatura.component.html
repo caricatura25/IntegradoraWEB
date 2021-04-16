@@ -2,7 +2,6 @@
 
 <div class="background">
     <app-nav-bar></app-nav-bar>
-  
             <div class="container">
                 <div class="h1">   
                 <h1 class="bd-highlight">20°c</h1>
@@ -10,24 +9,25 @@
                 </div>
             <div class="h5">
                 <div class="h5">
-                <h5 class="bd-highlight">Temperatura</h5>
+                <h5 class="bd-highlight">{{sensor.nombre}}</h5>
             </div>
             </div>
             <div class="container">
                 <div class="row">
         </div><div class="row"><br><br><br><br></div>
         <div class="row offset-md-5 col-md-7">
-            <table class="table text-center table-light table-striped">
+            <div >
+                <b class="bd-highlight">Descripción: <p>{{sensor.descripcion}}</p></b>
+            </div>
+            <table class="table text-center table-light table-striped bd-highlight">
                 <thead>
                     <tr>
-                       
                         <th scope="col">Temperatura</th>
                         <th scope="col">Fecha</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let dato of datos">
-                       
+                    <tr *ngFor ="let dato of datos">
                         <td>{{dato.dato}}</td>
                         <td>{{dato.created_at |date:"short"}}</td>
                     </tr>

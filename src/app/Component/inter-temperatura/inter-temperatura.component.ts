@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
 
 
+
 @Component({
   selector: 'app-inter-temperatura',
   templateUrl: './inter-temperatura.component.html',
@@ -15,17 +16,24 @@ import { Dato } from 'src/app/Interfaces/dato';
 export class InterTemperaturaComponent implements OnInit {
   public invited:Boolean = environment.invited;
   public datos:Array<Dato>
-  constructor(private api: ServiciosService,public router: Router,public cookies:CookieService) { }
+  public sensor:Temperatura
+
+  ws: any;
+  chat: any;
+  mensajes:Object[] = [];
+  msg: string;
+
+  constructor(private api: ServiciosService, public router: Router, public cookies:CookieService) { }
 
   ngOnInit(): void {
     this.checkToken()
     console.log("oninit")
-    this.peticiondatos()
+    this.peticionsensor()
   }
   
   peticiondatos(){
     console.log("realizabdo peticion")
-    const request = {dispositivo_id: 4}
+    const request = {dispositivo_id: this.sensor.dispositivo_id}
     this.api.datos(request).subscribe(data => {
       console.log("hecho")
       this.datos = data.registros
@@ -36,6 +44,18 @@ export class InterTemperaturaComponent implements OnInit {
     });
   }
 
+  peticionsensor(){
+    console.log("realizabdo peticion sensor")
+    this.api.temperatura().subscribe(data => {
+      console.log("hecho sensor de temperatura")
+      this.sensor = data
+      console.log(data)
+      this.peticiondatos()
+    }, error =>{
+      console.log("Error peticion sensor Temperatura")
+      console.log(error)
+    });
+  }
 
   checkToken(){
     console.log("Verificando Token-- CheckToken()")
