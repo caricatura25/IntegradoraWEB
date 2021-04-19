@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
-import Ws from '@adonisjs/websocket-client'
+import Ws from '@adonisjs/websocket-client';
 
 
 @Component({
@@ -20,8 +20,7 @@ export class InterTemperaturaComponent implements OnInit {
 
   ws: any;
   chat: any;
-  mensajes:Object[] = [];
-  msg: string;
+
   temperatura: string;
 
   constructor(private api: ServiciosService, public router: Router, public cookies:CookieService) { }
@@ -30,11 +29,11 @@ export class InterTemperaturaComponent implements OnInit {
     this.checkToken()
     console.log("oninit")
     this.peticionsensor()
-    this.temperaturaSocket()
+    //this.temperaturaSocket()
   }
 
   temperaturaSocket(){
-    this.ws = Ws(environment.apisocket); //ruta de mi web socket
+    this.ws = Ws("ws://54.146.120.131:3333"); //ruta de mi web socket
 
     this.ws.connect(); //me conecto al ws
     this.chat = this.ws.subscribe("wstemp") //subscribo al canal
@@ -42,7 +41,7 @@ export class InterTemperaturaComponent implements OnInit {
     this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
       this.temperatura = data
     })
-  }
+  } 
   
   peticiondatos(){
     console.log("realizabdo peticion")

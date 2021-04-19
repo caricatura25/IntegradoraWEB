@@ -1,7 +1,6 @@
 export const environment = {
   production: true,
   apiURL: 'http://127.0.0.1:3333/',
-  apisocket: 'ws://127.0.0.1:3333',
   name: null,
   idpost:0,
   posttitulo: "",
