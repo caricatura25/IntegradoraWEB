@@ -34,6 +34,8 @@ export class InterControlesComponent implements OnInit {
     });
   }
 
+  
+
   checkToken(){
     console.log("Verificando Token-- CheckToken()")
     
