@@ -29,6 +29,7 @@ export class InterTemperaturaComponent implements OnInit {
     this.checkToken()
     console.log("oninit")
     this.peticionsensor()
+    this.peticiondatos()
     //this.temperaturaSocket()
   }
 
