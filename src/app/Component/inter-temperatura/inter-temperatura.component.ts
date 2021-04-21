@@ -28,8 +28,8 @@ export class InterTemperaturaComponent implements OnInit {
   ngOnInit(): void {
     this.checkToken()
     console.log("oninit")
-    this.peticionsensor()
-    this.peticiondatos()
+    this.peticionsensor() //Informacion de temperatura
+    this.peticiondatos() //Ultimos datos registrados 
     //this.temperaturaSocket()
   }
 
@@ -45,7 +45,7 @@ export class InterTemperaturaComponent implements OnInit {
     }) 
   } */  
   
-  peticiondatos(){ //PEticion para mostrar los ultimos 5 datos
+  peticiondatos(){ //Peticion para mostrar los ultimos 5 datos
     console.log("realizado peticion")
     const request = {dispositivo_id: this.sensor.dispositivo_id}
     this.api.datos(request).subscribe(data => {
@@ -58,9 +58,10 @@ export class InterTemperaturaComponent implements OnInit {
     });
   }
 
-  peticionsensor(){ //Peticion para obtener la informacion del sensor 
+  peticionsensor(){ //Peticion para obtener la informacion del sensor de temperatura
     console.log("realizabdo peticion sensor")
-    this.api.temperatura().subscribe(data => {
+    const request = {'dispositivo_id': 1}
+    this.api.temperatura(request).subscribe(data => {
       console.log("hecho sensor de temperatura")
       this.sensor = data
       console.log(data)

@@ -32,8 +32,8 @@ export class ServiciosService {
     return this.cookies.get("token");
   }
 
-  temperatura():Observable<any>{
-    return this.http.get<any>(`${this.apiURL}data/device`)
+  temperatura(request: Object):Observable<any>{
+    return this.http.post<any>(`${this.apiURL}data/device`,request)
   }
   pines():Observable<any>{
     return this.http.get<any>(`${this.apiURL}pines`)
