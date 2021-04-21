@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
-import Ws from '@adonisjs/websocket-client';
+
 
 
 @Component({
@@ -18,9 +18,7 @@ export class InterHumedadComponent implements OnInit {
   public sensores:Array<Humedad>
   public datos:Array<Dato>
 
-  ws: any;
-  chat: any;
-  humedad: string;
+ 
   constructor(private Hum: ServiciosService,private cookies: CookieService,public router: Router) { }
 
   ngOnInit(): void {
@@ -43,16 +41,7 @@ export class InterHumedadComponent implements OnInit {
     });
   }
 
-  huemdadSocket(){
-    //this.ws = Ws(environment.apisocket); //ruta de mi web socket
 
-    /* this.ws.connect(); //me conecto al ws
-    this.chat = this.ws.subscribe("wshum") //subscribo al canal
-
-    this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
-      this.humedad = data
-    }) */
-  } 
   
   peticiondatos(){
     console.log("realizabdo peticion")
