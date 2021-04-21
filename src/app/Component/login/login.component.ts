@@ -34,11 +34,11 @@ export class LoginComponent implements OnInit {
     this.setLogin();
     const request = { email: this.email_nombre, password: this.password };
     this.api.login(request).subscribe(data => {
-      this.api.setToken(data.token);
+      this.api.setToken(data.token.token);
       console.log("Sea iniciado sesion por admin")
       console.log(data)
       this.checkToken()
-    }, error =>{
+    }, error => {
       this.notadmin = true
       console.log("Login error admin")
       console.log(error)

@@ -33,7 +33,7 @@ export class ServiciosService {
   }
 
   temperatura():Observable<any>{
-    return this.http.get<any>(`${this.apiURL}sensors/temperature`)
+    return this.http.get<any>(`${this.apiURL}data/device`)
   }
   pines():Observable<any>{
     return this.http.get<any>(`${this.apiURL}pines`)
