@@ -30,7 +30,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor ="let dato of datos">
-                        <td>{{dato.dato}}</td>
+                        <td>{{dato.dato.temperatura}}</td>
                         <td>{{dato.created_at |date:"short"}}</td>
                     </tr>
                 </tbody>
