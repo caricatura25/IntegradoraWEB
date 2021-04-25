@@ -29,34 +29,8 @@ export class InterTemperaturaComponent implements OnInit {
     this.checkToken()
     console.log("oninit")
     this.peticionsensor() //Informacion de temperatura
-    this.peticiondatos() //Ultimos datos registrados 
-    //this.temperaturaSocket()
   }
 
-  /* temperaturaSocket(){
-    this.ws = Ws("ws://localhost:3333"); //ruta de mi web socket
-
-    this.ws.connect(); //me conecto al ws
-    this.chat = this.ws.subscribe("wstemp") //subscribo al canal
-    this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
-
-    this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
-      this.temperatura = data
-    }) 
-  }   */
-  
-  peticiondatos(){ //Peticion para mostrar los ultimos 5 datos
-    console.log("realizado peticion")
-    const request = {dispositivo_id: this.sensor.dispositivo_id}
-    this.api.datos(request).subscribe(data => {
-      console.log("hecho")
-      this.datos = data.registros
-      console.log(data)
-    }, error =>{
-      console.log("Error peticion datos Temperatura")
-      console.log(error)
-    });
-  }
 
   peticionsensor(){ //Peticion para obtener la informacion del sensor de temperatura
     console.log("realizabdo peticion sensor")
@@ -65,9 +39,35 @@ export class InterTemperaturaComponent implements OnInit {
       console.log("hecho sensor de temperatura")
       this.sensor = data
       console.log(data)
+      this.temperaturaSocket()
       this.peticiondatos()
     }, error =>{
       console.log("Error peticion sensor Temperatura")
+      console.log(error)
+    });
+  }
+
+  temperaturaSocket(){
+    this.ws = Ws("ws://127.0.0.1:3333"); //ruta de mi web socket
+
+    this.ws.connect(); //me conecto al ws
+    this.chat = this.ws.subscribe("wstemp") //subscribo al canal
+    this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
+
+    this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
+      this.temperatura = data.temperatura
+    })  
+  }   
+  
+  peticiondatos(){ //Peticion para mostrar los ultimos 5 datos
+    console.log("realizado peticion")
+    const request = {dispositivo_id: this.sensor.dispositivo_id, limit: 5}
+    this.api.datos(request).subscribe(data => {
+      console.log("hecho")
+      this.datos = data.registros
+      console.log(data)
+    }, error =>{
+      console.log("Error peticion datos Temperatura")
       console.log(error)
     });
   }
