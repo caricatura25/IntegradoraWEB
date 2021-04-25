@@ -30,6 +30,7 @@ import { InterInvitadosComponent } from './Component/inter-invitados/inter-invit
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from "ngx-cookie-service";
 import { TokenService } from './Interceptores/token.service';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -64,7 +65,9 @@ import { TokenService } from './Interceptores/token.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
+   
   ],
   providers: [
     CookieService,

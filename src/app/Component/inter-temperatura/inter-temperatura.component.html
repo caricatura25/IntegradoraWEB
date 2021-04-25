@@ -1,8 +1,69 @@
+<<<<<<< HEAD
 <div class="background">
     <app-nav-bar></app-nav-bar>
     <div class="container">
         <div class="h5">
             <h4>{{sensor.nombre}}</h4>
+=======
+<div class="container">
+
+    <div>
+        <app-nav-bar></app-nav-bar>
+        <div class="container ">
+            <div class="row offset-md-2 col-md-6">
+                <div class="h1">
+                </div>
+            </div>
+            <div class="jc-c">
+                <p style="color: black;" class="bd-highlight fs-50">{{tempActual}}
+                    <p>
+            </div>
+        </div>
+        <div class="h5">
+            <div class="h5">
+                <p class="bd-highlight  jc-c fs-30">{{sensor.nombre}}</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+            </div>
+            <div class="row offset-md-0 m-t-30">
+                <div>
+                    <b class="bd-highlight">Descripción: <p>Este sensor de temperatura se encuentra en el interior de la casa, junto a la sala de espera, con la finalidad de capturar la temperatura del centro de la casa</p></b>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="flex-item" *ngIf="datosGraf_length > 0">
+                        <div style="display: block; width: 600px;">
+                            <canvas baseChart [datasets]="datosGraf" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <table class="table text-center table-light table-striped bd-highlight">
+                        <thead>
+                            <tr>
+                                <th scope="col">Temperatura</th>
+                                <th scope="col">Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let dato of datos">
+                                <td>{{dato.dato.temperatura}}</td>
+                                <td>{{dato.created_at |date:"short"}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+
+>>>>>>> fecb1f8904845e3396d0c288d20cdb7168aaed48
         </div>
         
         <div class="h1">
@@ -29,3 +90,8 @@
     </div>
     </div>       
     </div>
+<<<<<<< HEAD
+=======
+
+</div>
+>>>>>>> fecb1f8904845e3396d0c288d20cdb7168aaed48

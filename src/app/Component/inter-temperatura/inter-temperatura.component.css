@@ -15,3 +15,8 @@ h1 { font-size: 220%;
    h4 { font-size: 280%;
     color: #F7F4F3;
     }
+.jc-c{
+    display: flex;
+    justify-content: center;
+    color: black;
+}
