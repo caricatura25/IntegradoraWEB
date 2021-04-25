@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
 import Ws from '@adonisjs/websocket-client';
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Color, BaseChartDirective, Label } from 'ng2-charts';
+/* import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Color, BaseChartDirective, Label } from 'ng2-charts'; */
 
 
 
@@ -21,7 +21,7 @@ export class InterTemperaturaComponent implements OnInit {
   public datos:Array<Dato>
   public sensor:Temperatura
 
-  public datosGraf: ChartDataSets[] = [];
+/*   public datosGraf: ChartDataSets[] = [];
   public datosGraf_length = 0;
 
   public tempActual = null;
@@ -74,7 +74,7 @@ export class InterTemperaturaComponent implements OnInit {
       // ],
     },
   };
-
+ */
   ws: any;
   chat: any;
 
@@ -112,16 +112,11 @@ export class InterTemperaturaComponent implements OnInit {
     this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
 
     this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
-<<<<<<< HEAD
-      this.temperatura = data.temperatura
-    })  
-  }   
-=======
       this.temperatura = data
     }) 
-  }   */
+  }   
 
-  llenarGrafica(){
+  /* llenarGrafica(){
     // console.log("Grafica", this.datos);
     
     let datosAux = [];
@@ -146,8 +141,7 @@ export class InterTemperaturaComponent implements OnInit {
 
     this.datosGraf_length = this.datosGraf.length;
 
-  }
->>>>>>> b373264b771967a6ab41f40e2a001ebd5fc42b2e
+  } */
   
   peticiondatos(){ //Peticion para mostrar los ultimos 5 datos
     console.log("realizado peticion")
@@ -156,7 +150,7 @@ export class InterTemperaturaComponent implements OnInit {
       console.log("hecho")
       this.datos = data.registros
       console.log(data)
-      this.llenarGrafica()
+      //this.llenarGrafica()
     }, error =>{
       console.log("Error peticion datos Temperatura")
       console.log(error)
@@ -164,23 +158,7 @@ export class InterTemperaturaComponent implements OnInit {
     
   }
 
-<<<<<<< HEAD
-=======
-  peticionsensor(){ //Peticion para obtener la informacion del sensor de temperatura
-    console.log("realizando peticion sensor")
-    const request = {'dispositivo_id': 1}
-    this.api.temperatura(request).subscribe(data => {
-      console.log("hecho sensor de temperatura")
-      this.sensor = data
-      console.log(data)
-      this.peticiondatos()
-    }, error =>{
-      console.log("Error peticion sensor Temperatura")
-      console.log(error)
-    });
-  }
 
->>>>>>> b373264b771967a6ab41f40e2a001ebd5fc42b2e
   checkToken(){
     console.log("Verificando Token-- CheckToken()")
     
@@ -202,11 +180,11 @@ export class InterTemperaturaComponent implements OnInit {
     });
     
   }
-  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+  /* public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
   }
 
   public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
-  }
+  } */
 }
