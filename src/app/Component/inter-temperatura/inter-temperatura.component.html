@@ -1,42 +1,31 @@
-
-
 <div class="background">
     <app-nav-bar></app-nav-bar>
-            <div class="container">
-                <div class="row offset-md-2 col-md-6">
-                <div class="h1">   
-                <h1 class="bd-highlight">30°</h1>
-                </div>
-                </div> 
-                </div>
-            <div class="h5">
-                <div class="h5">
-                <h5 class="bd-highlight">{{sensor.nombre}}</h5>
-            </div>
-            </div>
-            <div class="container">
-                <div class="row">
-        </div><div class="row"><br><br><br><br></div>
-        <div class="row offset-md-0 col-md-6">
-            <div>
-                <b class="bd-highlight">Descripción: <p>{{sensor.descripcion}}</p></b>
-            </div>
-            </div>
-            <div class="row offset-md-6 col-md-7">
-            <table class="table text-center table-light table-striped bd-highlight">
-                <thead>
-                    <tr>
-                        <th scope="col">Temperatura</th>
-                        <th scope="col">Fecha</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor ="let dato of datos">
-                        <td>{{dato.dato.temperatura}}</td>
-                        <td>{{dato.created_at |date:"short"}}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="container">
+        <div class="h5">
+            <h4>{{sensor.nombre}}</h4>
         </div>
+        
+        <div class="h1">
+            <h1>30°</h1>
+       
     </div>
-</div>
+    <div class="row offset-md-6 col-md-7">
+    <h5>{{sensor.descripcion}}</h5>
+       
+        <table class="table text-center table-light table-striped bd-highlight">
+            <thead>
+                <tr>
+                    <th scope="col">Temperatura</th>
+                    <th scope="col">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor ="let dato of datos">
+                    <td>{{dato.dato.temperatura}}</td>
+                    <td>{{dato.created_at |date:"short"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>       
+    </div>

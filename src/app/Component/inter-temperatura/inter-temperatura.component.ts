@@ -59,7 +59,7 @@ export class InterTemperaturaComponent implements OnInit {
   }
 
   peticionsensor(){ //Peticion para obtener la informacion del sensor de temperatura
-    console.log("realizabdo peticion sensor")
+    console.log("realizando peticion sensor")
     const request = {'dispositivo_id': 1}
     this.api.temperatura(request).subscribe(data => {
       console.log("hecho sensor de temperatura")
