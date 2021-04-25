@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
 import Ws from '@adonisjs/websocket-client';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Color, BaseChartDirective, Label } from 'ng2-charts';
+
 
 
 @Component({
@@ -17,6 +20,60 @@ export class InterTemperaturaComponent implements OnInit {
   public invited:Boolean = environment.invited;
   public datos:Array<Dato>
   public sensor:Temperatura
+
+  public datosGraf: ChartDataSets[] = [];
+  public datosGraf_length = 0;
+
+  public tempActual = null;
+
+  public lineChartData: ChartDataSets[] = [
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
+    { data: [180, 480, 770, 90, 1000, 270, 400], label: 'Series C', yAxisID: 'y-axis-1' }
+  ];
+  public lineChartLabels: Label[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
+  public lineChartLegend = true;
+  public lineChartType: ChartType = 'line';
+  public lineChartOptions: (ChartOptions & { annotation: any }) = {
+    responsive: true,
+    scales: {
+      // We use this empty structure as a placeholder for dynamic theming.
+      xAxes: [{}],
+      yAxes: [
+        // {
+        //   id: 'y-axis-0',
+        //   position: 'left',
+        // },
+        // {
+        //   id: 'y-axis-1',
+        //   position: 'right',
+        //   gridLines: {
+        //     color: 'rgba(255,0,0,0.3)',
+        //   },
+        //   ticks: {
+        //     fontColor: 'blue',
+        //   }
+        // }
+      ]
+    },
+    annotation: {
+      // annotations: [
+      //   {
+      //     type: 'line',
+      //     mode: 'vertical',
+      //     scaleID: 'x-axis-0',
+      //     value: 'March',
+      //     borderColor: 'orange',
+      //     borderWidth: 2,
+      //     label: {
+      //       enabled: true,
+      //       fontColor: 'orange',
+      //       content: 'LineAnno'
+      //     }
+      //   },
+      // ],
+    },
+  };
 
   ws: any;
   chat: any;
@@ -55,9 +112,42 @@ export class InterTemperaturaComponent implements OnInit {
     this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
 
     this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
+<<<<<<< HEAD
       this.temperatura = data.temperatura
     })  
   }   
+=======
+      this.temperatura = data
+    }) 
+  }   */
+
+  llenarGrafica(){
+    // console.log("Grafica", this.datos);
+    
+    let datosAux = [];
+
+
+    this.datos.map(item => {
+        // console.log('item ',item);
+
+        let temp = item.dato['temperatura'];
+
+        datosAux.push(temp);
+
+    });
+
+    
+
+    // console.log('aux ',datosAux);
+
+    this.datosGraf.push({data: datosAux, label: 'Temperatura'});
+
+    this.tempActual = this.datos[this.datos.length-1]['dato']['temperatura'];
+
+    this.datosGraf_length = this.datosGraf.length;
+
+  }
+>>>>>>> b373264b771967a6ab41f40e2a001ebd5fc42b2e
   
   peticiondatos(){ //Peticion para mostrar los ultimos 5 datos
     console.log("realizado peticion")
@@ -66,12 +156,31 @@ export class InterTemperaturaComponent implements OnInit {
       console.log("hecho")
       this.datos = data.registros
       console.log(data)
+      this.llenarGrafica()
     }, error =>{
       console.log("Error peticion datos Temperatura")
       console.log(error)
     });
+    
   }
 
+<<<<<<< HEAD
+=======
+  peticionsensor(){ //Peticion para obtener la informacion del sensor de temperatura
+    console.log("realizando peticion sensor")
+    const request = {'dispositivo_id': 1}
+    this.api.temperatura(request).subscribe(data => {
+      console.log("hecho sensor de temperatura")
+      this.sensor = data
+      console.log(data)
+      this.peticiondatos()
+    }, error =>{
+      console.log("Error peticion sensor Temperatura")
+      console.log(error)
+    });
+  }
+
+>>>>>>> b373264b771967a6ab41f40e2a001ebd5fc42b2e
   checkToken(){
     console.log("Verificando Token-- CheckToken()")
     
@@ -92,5 +201,12 @@ export class InterTemperaturaComponent implements OnInit {
         console.log(error)
     });
     
+  }
+  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
+  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
   }
 }

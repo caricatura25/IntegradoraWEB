@@ -1,32 +1,31 @@
 <div class="backgrounds">
-<app-nav-bar></app-nav-bar>
-<br>
-<div class="container">
-    <div class="h1">   
-    <h1 class="bd-highlight">48%</h1>
-    </div> 
+    <app-nav-bar></app-nav-bar>
+    <div class="container">
+        <div class="h5">
+            <h4>{{sensor.nombre}}</h4>
+        </div>
+        
+        <div class="h1">
+            <h1>30°</h1>
+       
     </div>
-<div class="h5">
-    <div class="h5">
-    <h5 class="bd-highlight">Humedad</h5>
-</div>
-</div>
-<div class="row offset-md-5 col-md-7">
-    <table class="table text-center table-light table-striped">
-        <thead>
-             <tr>
-               
-                <th scope="col">Temperatura</th>
-                <th scope="col">Fecha</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let dato of datos">
-                
-                <td>{{dato.dato}}</td>
-                <td>{{dato.created_at |date:"short"}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-</div>
+    <div class="row offset-md-6 col-md-7">
+    <h5>{{sensores.descripcion}}</h5>
+       
+        <table class="table text-center table-light table-striped bd-highlight">
+            <thead>
+                <tr>
+                    <th scope="col">Humedad</th>
+                    <th scope="col">Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor ="let dato of datos">
+                    <td>{{dato.dato.humedad}}</td>
+                    <td>{{dato.created_at |date:"short"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>       
+ </div>
