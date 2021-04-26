@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
 import Ws from '@adonisjs/websocket-client';
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Color, BaseChartDirective, Label } from 'ng2-charts';
+/* import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Color, BaseChartDirective, Label } from 'ng2-charts'; */
 
 
 
@@ -21,7 +21,7 @@ export class InterTemperaturaComponent implements OnInit {
   public datos:Array<Dato>
   public sensor:Temperatura
 
-  public datosGraf: ChartDataSets[] = [];
+/*   public datosGraf: ChartDataSets[] = [];
   public datosGraf_length = 0;
 
   public tempActual = null;
@@ -83,7 +83,7 @@ export class InterTemperaturaComponent implements OnInit {
       // ],
     },
   };
-
+ */
   ws: any;
   chat: any;
 
@@ -95,12 +95,26 @@ export class InterTemperaturaComponent implements OnInit {
     this.checkToken()
     console.log("oninit")
     this.peticionsensor() //Informacion de temperatura
-    this.peticiondatos() //Ultimos datos registrados 
-    //this.temperaturaSocket()
   }
 
-  /* temperaturaSocket(){
-    this.ws = Ws("ws://localhost:3333"); //ruta de mi web socket
+
+  peticionsensor(){ //Peticion para obtener la informacion del sensor de temperatura
+    console.log("realizabdo peticion sensor")
+    const request = {'dispositivo_id': 1}
+    this.api.temperatura(request).subscribe(data => {
+      console.log("hecho sensor de temperatura")
+      this.sensor = data
+      console.log(data)
+      this.temperaturaSocket()
+      this.peticiondatos()
+    }, error =>{
+      console.log("Error peticion sensor Temperatura")
+      console.log(error)
+    });
+  }
+
+  temperaturaSocket(){
+    this.ws = Ws("ws://127.0.0.1:3333"); //ruta de mi web socket
 
     this.ws.connect(); //me conecto al ws
     this.chat = this.ws.subscribe("wstemp") //subscribo al canal
@@ -109,9 +123,9 @@ export class InterTemperaturaComponent implements OnInit {
     this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
       this.temperatura = data
     }) 
-  }   */
+  }   
 
-  llenarGrafica(){
+  /* llenarGrafica(){
     // console.log("Grafica", this.datos);
     
     let datosAux = [];
@@ -136,16 +150,16 @@ export class InterTemperaturaComponent implements OnInit {
 
     this.datosGraf_length = this.datosGraf.length;
 
-  }
+  } */
   
   peticiondatos(){ //Peticion para mostrar los ultimos 5 datos
     console.log("realizado peticion")
-    const request = {dispositivo_id: this.sensor.dispositivo_id}
+    const request = {dispositivo_id: this.sensor.dispositivo_id, limit: 5}
     this.api.datos(request).subscribe(data => {
       console.log("hecho")
       this.datos = data.registros
       console.log(data)
-      this.llenarGrafica()
+      //this.llenarGrafica()
     }, error =>{
       console.log("Error peticion datos Temperatura")
       console.log(error)
@@ -153,19 +167,6 @@ export class InterTemperaturaComponent implements OnInit {
     
   }
 
-  peticionsensor(){ //Peticion para obtener la informacion del sensor de temperatura
-    console.log("realizabdo peticion sensor")
-    const request = {'dispositivo_id': 1}
-    this.api.temperatura(request).subscribe(data => {
-      console.log("hecho sensor de temperatura")
-      this.sensor = data
-      console.log(data)
-      this.peticiondatos()
-    }, error =>{
-      console.log("Error peticion sensor Temperatura")
-      console.log(error)
-    });
-  }
 
   checkToken(){
     console.log("Verificando Token-- CheckToken()")
@@ -188,11 +189,11 @@ export class InterTemperaturaComponent implements OnInit {
     });
     
   }
-  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+  /* public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
   }
 
   public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
-  }
+  } */
 }
