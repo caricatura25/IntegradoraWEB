@@ -39,6 +39,12 @@ export class ControlesComponent implements OnInit {
         console.log(error)
     });
     
-  }
+    {
 
+    }
+  }
+  encenderfoco(){
+    
+
+  }
 }
