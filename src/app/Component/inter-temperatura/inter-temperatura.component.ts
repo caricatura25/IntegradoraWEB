@@ -35,6 +35,15 @@ export class InterTemperaturaComponent implements OnInit {
   public lineChartLabels: Label[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
   public lineChartLegend = true;
   public lineChartType: ChartType = 'line';
+  public lineChartColors: Color[] = [
+    { // grey
+      backgroundColor: 'rgba(44,60,193,0.5)',
+      borderColor: 'rgba(44,60,193,1)',
+      pointBackgroundColor: 'rgba(44,60,193,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }];
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
     scales: {
@@ -138,7 +147,7 @@ export class InterTemperaturaComponent implements OnInit {
 
     this.datosGraf.push({data: datosAux, label: 'Temperatura'});
 
-    this.tempActual = this.datos[this.datos.length-1]['dato']['temperatura'];
+    this.tempActual = this.datos[this.datos.length -1]['dato']['temperatura'];
 
     this.datosGraf_length = this.datosGraf.length;
 
