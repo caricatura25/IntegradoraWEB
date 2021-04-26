@@ -47,8 +47,8 @@ export class ServiciosService {
     return this.http.post<User>(`${this.apiURL}device`,request)
   }
 
-  humedad():Observable<any>{
-    return this.http.get<any>(`${this.apiURL}sensors/humidity`)
+  humedad(request: Object):Observable<any>{
+    return this.http.post<any>(`${this.apiURL}data/device`,request)
   }
 
   pending_invited():Observable<any>{

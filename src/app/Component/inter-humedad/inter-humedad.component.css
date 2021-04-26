@@ -5,15 +5,25 @@
     /* Escalamiento proporcional */
     width: 100%;
     height: auto;
-
     /* Posicionamiento */
     position: fixed;
     top: 0;
     
     left: 0;
 }
-h1 { font-size: 170%;
- color: #F7F4F3; }
-h5 { font-size: 380%;
- color: #F7F4F3;
- }
+
+h1 {
+    font-size: 170%;
+    color: #F7F4F3;
+}
+
+h5 {
+    font-size: 380%;
+    color: #F7F4F3;
+}
+
+.jc-c {
+    display: flex;
+    justify-content: center;
+    color: black;
+}

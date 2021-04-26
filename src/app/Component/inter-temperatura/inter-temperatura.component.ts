@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
 import Ws from '@adonisjs/websocket-client';
-/* import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Color, BaseChartDirective, Label } from 'ng2-charts'; */
+//import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+//import { Color, BaseChartDirective, Label } from 'ng2-charts'; */
 
 
 
@@ -20,11 +20,12 @@ export class InterTemperaturaComponent implements OnInit {
   public invited:Boolean = environment.invited;
   public datos:Array<Dato>
   public sensor:Temperatura
-
-/*   public datosGraf: ChartDataSets[] = [];
+  public datosGraf //ChartDataSets[] = [];
   public datosGraf_length = 0;
 
   public tempActual = null;
+
+/*   
 
   public lineChartData: ChartDataSets[] = [
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
@@ -34,6 +35,15 @@ export class InterTemperaturaComponent implements OnInit {
   public lineChartLabels: Label[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
   public lineChartLegend = true;
   public lineChartType: ChartType = 'line';
+  public lineChartColors: Color[] = [
+    { // grey
+      backgroundColor: 'rgba(44,60,193,0.5)',
+      borderColor: 'rgba(44,60,193,1)',
+      pointBackgroundColor: 'rgba(44,60,193,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }];
   public lineChartOptions: (ChartOptions & { annotation: any }) = {
     responsive: true,
     scales: {
@@ -137,7 +147,7 @@ export class InterTemperaturaComponent implements OnInit {
 
     this.datosGraf.push({data: datosAux, label: 'Temperatura'});
 
-    this.tempActual = this.datos[this.datos.length-1]['dato']['temperatura'];
+    this.tempActual = this.datos[this.datos.length -1]['dato']['temperatura'];
 
     this.datosGraf_length = this.datosGraf.length;
 
