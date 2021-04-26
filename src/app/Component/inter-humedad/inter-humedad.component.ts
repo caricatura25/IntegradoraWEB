@@ -15,25 +15,27 @@ import { Dato } from 'src/app/Interfaces/dato';
 })
 export class InterHumedadComponent implements OnInit {
   public invited:Boolean =  environment.invited;
-  public sensores:Array<Humedad>
+  public sensor:Humedad
   public datos:Array<Dato>
 
- 
+
   constructor(private Hum: ServiciosService,private cookies: CookieService,public router: Router) { }
 
   ngOnInit(): void {
   this.checkToken()
-  this.peticiondatos()
+  //this.peticiondatos()
   console.log("oninit")
   this.HUMEDAD()
   //this.huemdadSocket()
   }
 
   HUMEDAD(){
-    console.log("realizabdo peticion")
-    this.Hum.humedad().subscribe(data => {
+    console.log("realizando peticion")
+    const request = {dispositivo_id: 1}
+    this.Hum.humedad(request).subscribe(data => {
       console.log("hecho")
-      this.sensores = data
+      this.sensor = data
+      this.peticiondatos()
       console.log(data)
     }, error =>{
       console.log("Error peticion sensores humedad")
@@ -45,7 +47,7 @@ export class InterHumedadComponent implements OnInit {
   
   peticiondatos(){
     console.log("realizabdo peticion")
-    const request = {dispositivo_id: 7}
+    const request = {dispositivo_id: this.sensor.dispositivo_id, limit: 5}
     this.Hum.datos(request).subscribe(data => {
       console.log("hecho")
       this.datos = data.registros

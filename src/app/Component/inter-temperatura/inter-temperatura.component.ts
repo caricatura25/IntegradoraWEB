@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
 import Ws from '@adonisjs/websocket-client';
-/* import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Color, BaseChartDirective, Label } from 'ng2-charts'; */
+//import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+//import { Color, BaseChartDirective, Label } from 'ng2-charts'; */
 
 
 
@@ -20,11 +20,12 @@ export class InterTemperaturaComponent implements OnInit {
   public invited:Boolean = environment.invited;
   public datos:Array<Dato>
   public sensor:Temperatura
-
-/*   public datosGraf: ChartDataSets[] = [];
+  public datosGraf //ChartDataSets[] = [];
   public datosGraf_length = 0;
 
   public tempActual = null;
+
+/*   
 
   public lineChartData: ChartDataSets[] = [
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
