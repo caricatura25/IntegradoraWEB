@@ -1,20 +1,22 @@
-<div class="">
+<div class=" ">
     <app-nav-bar></app-nav-bar>
     <br>
-    <div class="container">
-        <div class="h1">
-            <h1 class="bd-highlight jc-c" style="color: black;">{{humeActual}}
+
+
+    <div class="container ">
+        <div class="h1 ">
+            <h1 class="bd-highlight jc-c " style="color: black; ">{{humeActual}}
             </h1>
         </div>
     </div>
-    <div class="h5">
-        <div class="h5">
-            <p class="bd-highlight jc-c fs-50" style="color: black;">Humedad</p>
+    <div class="h5 ">
+        <div class="h5 ">
+            <p class="bd-highlight jc-c fs-50 " style="color: black; ">Humedad</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <div class="flex-item" *ngIf="datosGraf_length > 0">
+    <div class="row ">
+        <div class="col ">
+            <div class="flex-item " *ngIf="datosGraf_length> 0">
                 <div style="display: block; width: 600px;">
                     <canvas baseChart [datasets]="datosGraf" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
                 </div>
@@ -38,6 +40,7 @@
                     </tr>
                 </tbody>
             </table>
+
         </div>
     </div>
 </div>
