@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { from } from 'rxjs';
 import { Foco } from 'src/app/Interfaces/foco';
 import { ServiciosService } from 'src/app/servicios.service';
 import { environment } from 'src/environments/environment.prod';
@@ -44,6 +45,7 @@ export class ControlesComponent implements OnInit {
     }
   }
   encenderfoco(){
+    Array.from ('focos');
     
 
   }
