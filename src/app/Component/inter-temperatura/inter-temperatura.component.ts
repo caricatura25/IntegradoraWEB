@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
 import Ws from '@adonisjs/websocket-client';
-//import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-//import { Color, BaseChartDirective, Label } from 'ng2-charts'; */
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Color, BaseChartDirective, Label } from 'ng2-charts'; 
 
 
 
@@ -20,12 +20,12 @@ export class InterTemperaturaComponent implements OnInit {
   public invited:Boolean = environment.invited;
   public datos:Array<Dato>
   public sensor:Temperatura
-  public datosGraf //ChartDataSets[] = [];
+  public datosGraf: ChartDataSets[] = [];
   public datosGraf_length = 0;
 
   public tempActual = null;
 
-/*   
+   
 
   public lineChartData: ChartDataSets[] = [
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
@@ -84,7 +84,7 @@ export class InterTemperaturaComponent implements OnInit {
       // ],
     },
   };
- */
+ 
   ws: any;
   chat: any;
 
@@ -126,14 +126,14 @@ export class InterTemperaturaComponent implements OnInit {
     }) 
   }   
 
-  /* llenarGrafica(){
-    // console.log("Grafica", this.datos);
+  llenarGrafica(){
+    console.log("Grafica", this.datos);
     
     let datosAux = [];
 
 
     this.datos.map(item => {
-        // console.log('item ',item);
+         console.log('item ',item);
 
         let temp = item.dato['temperatura'];
 
@@ -151,7 +151,7 @@ export class InterTemperaturaComponent implements OnInit {
 
     this.datosGraf_length = this.datosGraf.length;
 
-  } */
+  } 
   
   peticiondatos(){ //Peticion para mostrar los ultimos 5 datos
     console.log("realizado peticion")
@@ -160,7 +160,7 @@ export class InterTemperaturaComponent implements OnInit {
       console.log("hecho")
       this.datos = data.registros
       console.log(data)
-      //this.llenarGrafica()
+      this.llenarGrafica()
     }, error =>{
       console.log("Error peticion datos Temperatura")
       console.log(error)
@@ -190,11 +190,11 @@ export class InterTemperaturaComponent implements OnInit {
     });
     
   }
-  /* public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
   }
 
   public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
-  } */
+  } 
 }
