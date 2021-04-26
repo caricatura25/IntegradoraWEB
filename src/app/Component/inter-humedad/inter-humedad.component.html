@@ -1,32 +1,41 @@
-<div class="backgrounds">
-<app-nav-bar></app-nav-bar>
-<br>
-<div class="container">
-    <div class="h1">   
-    <h1 class="bd-highlight">48%</h1>
-    </div> 
+<div class="">
+    <app-nav-bar></app-nav-bar>
+    <br>
+    <div class="container">
+        <div class="h1">
+            <h1 class="bd-highlight">{{humeActual}}
+            </h1>
+        </div>
     </div>
-<div class="h5">
     <div class="h5">
-    <h5 class="bd-highlight">Humedad</h5>
-</div>
-</div>
-<div class="row offset-md-5 col-md-7">
-    <table class="table text-center table-light table-striped">
-        <thead>
-             <tr>
-               
-                <th scope="col">Temperatura</th>
-                <th scope="col">Fecha</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let dato of datos">
-                
-                <td>{{dato.dato}}</td>
-                <td>{{dato.created_at |date:"short"}}</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-</div>
+        <div class="h5">
+            <p class="bd-highlight jc-c fs-50" style="color: black;">Humedad</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="flex-item" *ngIf="datosGraf_length > 0">
+                <div style="display: block; width: 600px;">
+                    <canvas baseChart [datasets]="datosGraf" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <table class="table text-center table-light table-striped bd-highlight">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Humedad</th>
+                        <th scope="col">Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let dato of datos">
+
+                        <td>{{dato.dato}}</td>
+                        <td>{{dato.created_at |date:"short"}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

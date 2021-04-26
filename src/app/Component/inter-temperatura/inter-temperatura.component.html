@@ -32,7 +32,7 @@
                 <div class="col">
                     <div class="flex-item" *ngIf="datosGraf_length > 0">
                         <div style="display: block; width: 600px;">
-                            <canvas baseChart [datasets]="datosGraf" [labels]="lineChartLabels" [options]="lineChartOptions" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                            <canvas baseChart [datasets]="datosGraf" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
                         </div>
                     </div>
                 </div>
