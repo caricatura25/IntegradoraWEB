@@ -23,7 +23,7 @@ export class ControlesComponent implements OnInit {
     console.log("Verificando Token-- CheckToken()")
     
     this.api.check().subscribe(data => {
-        if(data.status){
+        if(data.status){ 
             console.log("Autorizado User")
         }else if(environment.invited){
             console.log("Autorizado Invitado")
