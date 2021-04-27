@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ServiciosService } from 'src/app/servicios.service';
 import { Humedad } from 'src/app/Interfaces/humedad';
 import { environment } from 'src/environments/environment.prod';
@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
+import Ws from '@adonisjs/websocket-client';
 
 
 
@@ -15,10 +16,13 @@ import { Color, BaseChartDirective, Label } from 'ng2-charts';
   templateUrl: './inter-humedad.component.html',
   styleUrls: ['./inter-humedad.component.css']
 })
-export class InterHumedadComponent implements OnInit {
+export class InterHumedadComponent implements OnInit,OnDestroy {
   public invited:Boolean =  environment.invited;
   public sensor:Humedad
   public datos:Array<Dato>
+  ws: any;
+  chat: any;
+  humedad: string
 
   public datosGraf: ChartDataSets[] = [];
   public datosGraf_length = 0;
@@ -100,12 +104,31 @@ export class InterHumedadComponent implements OnInit {
     this.Hum.humedad(request).subscribe(data => {
       console.log("hecho")
       this.sensor = data
+      this.connect_ws()
       this.peticiondatos()
       console.log(data)
     }, error =>{
       console.log("Error peticion sensores humedad")
       console.log(error)
     });
+  }
+
+  connect_ws(){
+    const opciones = {reconnection:true}
+    this.ws = Ws(environment.wsURL,opciones); //ruta de mi web socket
+
+    this.ws.connect(); //me conecto al ws
+    this.chat = this.ws.subscribe("wshum") //subscribo al canal
+    this.humedadsocket()
+  }
+
+
+  humedadsocket(){
+    this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
+
+    this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
+      this.humedad = data
+    })
   }
 
 graficaHumedad(){
@@ -170,5 +193,10 @@ graficaHumedad(){
         console.log(error)
     });
     
+  }
+
+  ngOnDestroy(){
+    console.log("Saliendo del componente")
+    this.ws.close()
   }
 }

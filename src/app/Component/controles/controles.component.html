@@ -1,17 +1,10 @@
 <div class="card m-t-30">
-    
     <div class="card-body">
       <h5 class="card-title">{{focos.nombre}}</h5>
       <p class="card-text">{{focos.descripcion}}</p>
-      
       <br>
-      
-        <button type="button" onclick="encenderfoco()" class="btn btn-primary m-l-30">Enceder</button>
-        <button type="button" class="btn btn-dark m-l-30">Apagar</button>
-        <button type="button" href="#" class="btn btn-danger m-l-950">Eliminar</button>
-      
-       
-      </div>
+      <button type="button" (click)="encender()" class="btn btn-primary m-l-30">Enceder</button>
+      <button type="button"  (click)="apagar()" class="btn btn-dark m-l-30">Apagar</button>
+      <button type="button"  (click)="eliminar()"class="btn btn-danger m-l-950">Eliminar</button>
     </div>
-   
- 
+</div>
