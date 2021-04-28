@@ -16,7 +16,7 @@
         </div>
         <div class="h5">
             <div class="h5">
-                <p class="bd-highlight  jc-c fs-30">{{sensor.nombre}}</p>
+                <p class="bd-highlight  jc-c fs-30">Sensor Humedad</p>
             </div>
         </div>
         <div class="container">
@@ -34,7 +34,7 @@
                 <div class="col">
                     <div class="flex-item" *ngIf="datosGraf_length > 0">
                         <div style="display: block; width: 600px;">
-                            <canvas baseChart [datasets]="datosGraf" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+                            <canvas baseChart [datasets]="datosGraf" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" (chartHover)="chartHovered($event)"></canvas>
                         </div>
                     </div>
                 </div>

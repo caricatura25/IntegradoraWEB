@@ -125,7 +125,7 @@ export class InterTemperaturaComponent implements OnInit,OnDestroy {
     this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
 
     this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
-      this.tempActual = this.datos[this.datos.length -1]['dato']['temperatura'];
+      this.tempActual = this.datos[this.datos.length, 0]['dato']['temperatura'];
     }) 
   }   
 
@@ -158,7 +158,7 @@ export class InterTemperaturaComponent implements OnInit,OnDestroy {
   
   peticiondatos(){ //Peticion para mostrar los ultimos 5 datos
     console.log("realizado peticion")
-    const request = {dispositivo_id: this.sensor.dispositivo_id, limit: 5}
+    const request = {dispositivo_id: this.sensor.dispositivo_id, limit: 7}
     this.api.datos(request).subscribe(data => {
       console.log("hecho")
       this.datos = data.registros
