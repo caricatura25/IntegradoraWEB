@@ -127,7 +127,7 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
     this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
 
     this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
-      this.humedad = data
+      this.humeActual = this.datos[this.datos.length -1]['dato']['humedad'];
     })
   }
 
@@ -151,7 +151,7 @@ graficaHumedad(){
 
   this.datosGraf.push({data: datosAux, label: 'Humedad'});
 
-  this.humeActual = this.datos[this.datos.length -1]['dato']['humedad'];
+  
 
   this.datosGraf_length = this.datosGraf.length;
 

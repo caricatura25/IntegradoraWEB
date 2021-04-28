@@ -125,7 +125,7 @@ export class InterTemperaturaComponent implements OnInit,OnDestroy {
     this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
 
     this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
-      this.temperatura = data
+      this.tempActual = this.datos[this.datos.length -1]['dato']['temperatura'];
     }) 
   }   
 
@@ -150,7 +150,7 @@ export class InterTemperaturaComponent implements OnInit,OnDestroy {
 
     this.datosGraf.push({data: datosAux, label: 'Temperatura'});
 
-    this.tempActual = this.datos[this.datos.length -1]['dato']['temperatura'];
+   
 
     this.datosGraf_length = this.datosGraf.length;
 
