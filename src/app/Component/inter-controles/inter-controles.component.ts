@@ -23,7 +23,7 @@ export class InterControlesComponent implements OnInit {
 
 
   focospeticion(){
-    console.log("realizabdo peticion")
+    console.log("realizando peticion")
     this.api.focos().subscribe(data => {
       console.log("hecho")
       this.focos = data

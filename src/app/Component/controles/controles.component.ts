@@ -27,7 +27,7 @@ export class ControlesComponent implements OnInit,OnDestroy {
     console.log("Verificando Token-- CheckToken()")
     
     this.api.check().subscribe(data => {
-        if(data.status){
+        if(data.status){ 
             console.log("Autorizado User")
             this.connect_ws()
         }else if(environment.invited){
