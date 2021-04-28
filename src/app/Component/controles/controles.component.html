@@ -1,16 +1,10 @@
-<div class="card">
-    
+<div class="card m-t-30">
     <div class="card-body">
       <h5 class="card-title">{{focos.nombre}}</h5>
       <p class="card-text">{{focos.descripcion}}</p>
-      <a href="#" class="btn btn-primary">Eliminar</a>
       <br>
-      <!-- Default switch -->
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-  <label class="form-check-label" for="flexSwitchCheckDefault"
-    >No jala</label
-  >
-</div>
+      <button type="button" (click)="encender()" class="btn btn-primary m-l-30">Enceder</button>
+      <button type="button"  (click)="apagar()" class="btn btn-dark m-l-30">Apagar</button>
+      <button type="button"  (click)="eliminar()"class="btn btn-danger m-l-950">Eliminar</button>
     </div>
-  </div>
+</div>

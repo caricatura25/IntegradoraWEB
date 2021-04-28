@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ServiciosService } from 'src/app/servicios.service';
 import { Temperatura } from 'src/app/Interfaces/temperatura';
 import { environment } from 'src/environments/environment.prod';
@@ -16,7 +16,7 @@ import { Color, BaseChartDirective, Label } from 'ng2-charts';
   templateUrl: './inter-temperatura.component.html',
   styleUrls: ['./inter-temperatura.component.css']
 })
-export class InterTemperaturaComponent implements OnInit {
+export class InterTemperaturaComponent implements OnInit,OnDestroy {
   public invited:Boolean = environment.invited;
   public datos:Array<Dato>
   public sensor:Temperatura
@@ -25,7 +25,6 @@ export class InterTemperaturaComponent implements OnInit {
 
   public tempActual = null;
 
-   
 
   public lineChartData: ChartDataSets[] = [
     { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
@@ -106,7 +105,7 @@ export class InterTemperaturaComponent implements OnInit {
       console.log("hecho sensor de temperatura")
       this.sensor = data
       console.log(data)
-      this.temperaturaSocket()
+      this.connect_ws()
       this.peticiondatos()
     }, error =>{
       console.log("Error peticion sensor Temperatura")
@@ -114,11 +113,15 @@ export class InterTemperaturaComponent implements OnInit {
     });
   }
 
-  temperaturaSocket(){
-    this.ws = Ws("ws://127.0.0.1:3333"); //ruta de mi web socket
+  connect_ws(){
+    this.ws = Ws(environment.wsURL); //ruta de mi web socket
 
     this.ws.connect(); //me conecto al ws
     this.chat = this.ws.subscribe("wstemp") //subscribo al canal
+    this.temperaturaSocket()
+  }
+
+  temperaturaSocket(){
     this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
 
     this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
@@ -133,7 +136,7 @@ export class InterTemperaturaComponent implements OnInit {
 
 
     this.datos.map(item => {
-         console.log('item ',item);
+          console.log('item ',item);
 
         let temp = item.dato['temperatura'];
 
@@ -197,4 +200,9 @@ export class InterTemperaturaComponent implements OnInit {
   public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
   } 
+
+  ngOnDestroy(){
+    console.log("Saliendo del componente")
+    this.ws.close()
+  }
 }
