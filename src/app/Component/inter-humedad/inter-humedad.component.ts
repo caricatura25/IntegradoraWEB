@@ -127,7 +127,7 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
     this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
 
     this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
-      this.humeActual = this.datos[this.datos.length, 0]['dato']['humedad'];
+      this.humeActual = data
     })
   }
 
@@ -179,8 +179,10 @@ graficaHumedad(){
     this.Hum.check().subscribe(data => {
         if(data.status){
             console.log("Autorizado User")
+            this.connect_ws()
         }else if(environment.invited){
             console.log("Autorizado Invitado")
+            this.connect_ws()
         }else{
             console.log("No autorizado")
             environment.invited = false

@@ -57,5 +57,6 @@ export class InterControlesComponent implements OnInit {
     });
     
   }
+  
 
 }

@@ -6,6 +6,7 @@ import { Foco } from 'src/app/Interfaces/foco';
 import { ServiciosService } from 'src/app/servicios.service';
 import { environment } from 'src/environments/environment.prod';
 import Ws from '@adonisjs/websocket-client';
+import { InterControlesComponent } from '../inter-controles/inter-controles.component';
 
 @Component({
   selector: 'app-controles',
@@ -58,19 +59,41 @@ export class ControlesComponent implements OnInit,OnDestroy {
   encender(){
     console.log("Id de foco")
     console.log(this.focos.dispositivo_id)
-    
-    const data = {estado: 1, pin: this.focos.pin}
-    this.chat.emit("message", data); //Envio la informacion del foco
+    if(this.focos.dispositivo_id != 7){
+      const data = {estado: 0, pin: this.focos.pin,in:1}
+      this.chat.emit("message", data); //Envio la informacion del foco
+    }else{
+      console.log("foco externo")
+      const data = {estado: 0, pin: this.focos.pin,in:2}
+      this.chat.emit("message", data); //Envio la informacion del foco
+    }
+
   }
 
   apagar(){
-    const data = {estado: 0, pin: this.focos.pin}
-    this.chat.emit("message", data); //Envio la informacion del foco
+    if(this.focos.dispositivo_id != 7){
+      const data = {estado: 1, pin: this.focos.pin,in:1}
+      this.chat.emit("message", data); //Envio la informacion del foco
+    }else{
+      console.log("foco externo")
+      const data = {estado: 1, pin: this.focos.pin,in:2}
+      this.chat.emit("message", data); //Envio la informacion del foco
+    }
   }
 
   eliminar(){
     
+    const request = {dispositivo_id: this.focos.dispositivo_id,in:1}
+    console.log(request)
+    this.api.deletedevice(request).subscribe(data => {
+      console.log("hecho delete/device")
+      console.log(data)
+    }, error =>{
+      console.log("Eliminar foco error")
+      console.log(error)
+    }); 
   }
+  
 
   ngOnDestroy(){
     console.log("Saliendo del componente")
