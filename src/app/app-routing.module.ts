@@ -21,6 +21,7 @@ import { InterHumedadComponent } from './Component/inter-humedad/inter-humedad.c
 import { InterControlesComponent } from './Component/inter-controles/inter-controles.component';
 import { InterInvitadosComponent } from './Component/inter-invitados/inter-invitados.component';
 import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-temperatura.component';
+import { RegistrorasComponent } from './Component/registroras/registroras.component';
 
 
 
@@ -42,6 +43,7 @@ const routes: Routes = [
     {path:'registro/invitado',component:RegInvitadoComponent},
     {path:'invitados',component:InterInvitadosComponent},
     {path:'dispositivos',component:DispositivosComponent},
+    {path:'regras',component:RegistrorasComponent},
     {path:'**',component:Error404Component}
 ];
 

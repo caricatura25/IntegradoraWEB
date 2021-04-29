@@ -32,6 +32,7 @@ import { CookieService } from "ngx-cookie-service";
 import { TokenService } from './Interceptores/token.service';
 import { ChartsModule } from 'ng2-charts';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { RegistrorasComponent } from './Component/registroras/registroras.component';
 
 
 
@@ -59,7 +60,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     InterHumedadComponent,
     InterTemperaturaComponent,
     InterControlesComponent,
-    InterInvitadosComponent
+    InterInvitadosComponent,
+    RegistrorasComponent
   ],
   imports: [
     BrowserModule,
