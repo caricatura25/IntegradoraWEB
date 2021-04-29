@@ -21,12 +21,14 @@ import { InterHumedadComponent } from './Component/inter-humedad/inter-humedad.c
 import { InterControlesComponent } from './Component/inter-controles/inter-controles.component';
 import { InterInvitadosComponent } from './Component/inter-invitados/inter-invitados.component';
 import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-temperatura.component';
+import { MenuRComponent } from './Component/menu-r/menu-r.component';
 
 
 
 const routes: Routes = [
     {path:'', component:LoginComponent},
     {path:'navbar', component:NavBarComponent},
+    {path: 'menuR',component:MenuRComponent},
     {path:'splash',component:SplashComponent},
     {path:'carrusel', component:CarruselComponent},
     {path:'navadmin', component:AdminnavComponent},
@@ -43,6 +45,7 @@ const routes: Routes = [
     {path:'invitados',component:InterInvitadosComponent},
     {path:'dispositivos',component:DispositivosComponent},
     {path:'**',component:Error404Component}
+    
 ];
 
 @NgModule({
