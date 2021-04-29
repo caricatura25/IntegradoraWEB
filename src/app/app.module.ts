@@ -31,6 +31,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from "ngx-cookie-service";
 import { TokenService } from './Interceptores/token.service';
 import { ChartsModule } from 'ng2-charts';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 
@@ -67,6 +68,7 @@ import { ChartsModule } from 'ng2-charts';
     FormsModule,
     ReactiveFormsModule,
     ChartsModule,
+    NgxSpinnerModule
    
   ],
   providers: [
