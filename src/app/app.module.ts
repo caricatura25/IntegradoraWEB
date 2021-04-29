@@ -32,11 +32,8 @@ import { CookieService } from "ngx-cookie-service";
 import { TokenService } from './Interceptores/token.service';
 import { ChartsModule } from 'ng2-charts';
 import { NgxSpinnerModule } from "ngx-spinner";
-<<<<<<< HEAD
-import { RegistrorasComponent } from './Component/registroras/registroras.component';
-=======
 import { MenuRComponent } from './Component/menu-r/menu-r.component';
->>>>>>> beec8b2d3228eef0c4bb73b0509a1984fe84328c
+import {RegistrorasComponent} from  './Component/registroras/registroras.component';
 
 
 
@@ -50,6 +47,7 @@ import { MenuRComponent } from './Component/menu-r/menu-r.component';
     CarruselComponent,
     AdminnavComponent,
     RegistroComponent,
+    RegistrorasComponent,
     Error404Component,
     CardTempComponent,
     CardHumedadComponent,
@@ -65,11 +63,7 @@ import { MenuRComponent } from './Component/menu-r/menu-r.component';
     InterTemperaturaComponent,
     InterControlesComponent,
     InterInvitadosComponent,
-<<<<<<< HEAD
-    RegistrorasComponent
-=======
     MenuRComponent
->>>>>>> beec8b2d3228eef0c4bb73b0509a1984fe84328c
   ],
   imports: [
     BrowserModule,
