@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/* import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 
@@ -13,5 +13,5 @@ export class seg2 implements CanActivate {
     }
     this.router.navigateByUrl('/login');
     return false
-    }
-}
+    } 
+} */

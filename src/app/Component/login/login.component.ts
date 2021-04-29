@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
           environment.name = String(request.nombre) 
           console.log("Sea iniciado sesion por invitado")
           console.log(data)
-          this.router.navigateByUrl('/menu');
+          this.router.navigateByUrl('/menuR');
         }
       }, error =>{
         alert("Email/nombre o password incorrectos")
@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
         if(data.status){
             environment.name = data.user.nombre
             console.log("Autorizado User")
-            this.router.navigateByUrl('/menu');
+            this.router.navigateByUrl('/menuR');
         }else if(environment.invited){
             console.log("Autorizado Invitado")
         }else{
