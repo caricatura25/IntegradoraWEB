@@ -8,6 +8,8 @@ import { Dato } from 'src/app/Interfaces/dato';
 import Ws from '@adonisjs/websocket-client';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts'; 
+import { NgxSpinner } from 'ngx-spinner/lib/ngx-spinner.enum';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 
@@ -89,10 +91,15 @@ export class InterTemperaturaComponent implements OnInit,OnDestroy {
 
   temperatura: string;
 
-  constructor(private api: ServiciosService, public router: Router, public cookies:CookieService) { }
+  constructor(private api: ServiciosService, public router: Router, public cookies:CookieService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.checkToken()
+    this.spinner.show();
+  setTimeout(() => {
+    /** spinner ends after 5 seconds */
+    this.spinner.hide();
+  }, 2000);
     console.log("oninit")
     this.peticionsensor() //Informacion de temperatura
   }

@@ -8,6 +8,7 @@ import { Dato } from 'src/app/Interfaces/dato';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import Ws from '@adonisjs/websocket-client';
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 
@@ -88,10 +89,15 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
   };
 
  
-  constructor(private Hum: ServiciosService,private cookies: CookieService,public router: Router) { }
+  constructor(private Hum: ServiciosService,private cookies: CookieService,public router: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
   this.checkToken()
+  this.spinner.show();
+  setTimeout(() => {
+    /** spinner ends after 4 seconds */
+    this.spinner.hide();
+  }, 2000);
   //this.peticiondatos()
   console.log("oninit")
   this.HUMEDAD()
