@@ -23,6 +23,7 @@ import { InterInvitadosComponent } from './Component/inter-invitados/inter-invit
 import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-temperatura.component';
 import { MenuRComponent } from './Component/menu-r/menu-r.component';
 import { RegistrorasComponent } from './Component/registroras/registroras.component';
+import { RasexisComponent } from './Component/rasexis/rasexis.component';
 
 
 
@@ -46,6 +47,7 @@ const routes: Routes = [
     {path:'invitados',component:InterInvitadosComponent},
     {path:'dispositivos',component:DispositivosComponent},
     {path:'regras',component:RegistrorasComponent},
+    {path:'rasexis',component:RasexisComponent},
     {path:'**',component:Error404Component}
     
 ];
