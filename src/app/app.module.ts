@@ -34,6 +34,7 @@ import { ChartsModule } from 'ng2-charts';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { MenuRComponent } from './Component/menu-r/menu-r.component';
 import {RegistrorasComponent} from  './Component/registroras/registroras.component';
+import { InterMenuRComponent } from './Component/inter-menu-r/inter-menu-r.component';
 
 
 
@@ -63,7 +64,8 @@ import {RegistrorasComponent} from  './Component/registroras/registroras.compone
     InterTemperaturaComponent,
     InterControlesComponent,
     InterInvitadosComponent,
-    MenuRComponent
+    MenuRComponent,
+    InterMenuRComponent
   ],
   imports: [
     BrowserModule,

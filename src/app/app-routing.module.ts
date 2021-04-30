@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminnavComponent } from './Component/adminnav/adminnav.component';
 import { CarruselComponent } from './Component/carrusel/carrusel.component';
@@ -21,21 +21,25 @@ import { InterHumedadComponent } from './Component/inter-humedad/inter-humedad.c
 import { InterControlesComponent } from './Component/inter-controles/inter-controles.component';
 import { InterInvitadosComponent } from './Component/inter-invitados/inter-invitados.component';
 import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-temperatura.component';
+import {InterMenuR} from './Component/inter-menu-r/inter-menu-r.component';
 import { MenuRComponent } from './Component/menu-r/menu-r.component';
 import { RegistrorasComponent } from './Component/registroras/registroras.component';
+import { from } from 'rxjs';
+
 
 
 
 const routes: Routes = [
     {path:'', component:LoginComponent},
     {path:'navbar', component:NavBarComponent},
-    {path: 'menuR',component:MenuRComponent},
+    {path: 'menuRa',component:MenuRComponent},
     {path:'splash',component:SplashComponent},
     {path:'carrusel', component:CarruselComponent},
     {path:'navadmin', component:AdminnavComponent},
     {path:'login', component:LoginComponent},
     {path:'temperatura',component:InterTemperaturaComponent},
     {path:'controles',component:InterControlesComponent},
+    {path:'MenuR',component:InterMenuR},
     {path:'registro', component:RegistroComponent},
     {path:'Humedad',component:InterHumedadComponent},
     {path:'menu', component:MenuComponent},
