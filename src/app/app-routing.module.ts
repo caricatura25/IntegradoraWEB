@@ -24,8 +24,12 @@ import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-t
 import {InterMenuR} from './Component/inter-menu-r/inter-menu-r.component';
 import { MenuRComponent } from './Component/menu-r/menu-r.component';
 import { RegistrorasComponent } from './Component/registroras/registroras.component';
+<<<<<<< HEAD
 import { from } from 'rxjs';
 
+=======
+import { RasexisComponent } from './Component/rasexis/rasexis.component';
+>>>>>>> ee9347d5c18beb7944ad74dfcbc580985ba6b4cb
 
 
 
@@ -46,10 +50,11 @@ const routes: Routes = [
     {path:'cochera', component:CocheraComponent},
     {path:'alarma', component:AlarmaComponent},
     {path:'luz',component:ControlesComponent},
-    {path:'registro/invitado',component:RegInvitadoComponent},
+    {path:'regnuevo',component:RegInvitadoComponent},
     {path:'invitados',component:InterInvitadosComponent},
     {path:'dispositivos',component:DispositivosComponent},
     {path:'regras',component:RegistrorasComponent},
+    {path:'rasexis',component:RasexisComponent},
     {path:'**',component:Error404Component}
     
 ];
