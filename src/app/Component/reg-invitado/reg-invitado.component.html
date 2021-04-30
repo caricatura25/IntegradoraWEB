@@ -1,35 +1,34 @@
 
-<div class="backgrounde">
   <app-nav-bar></app-nav-bar>
-  <div class="container">
-    <br>
-    <br>
-    <br>    
-    <div class="row offset-md-3 col-md-6">       
-            <div class="card w-100 ">
-                <div class="card-body">
-                  <h5 class="card-title text-center">Iniciar sesion invitado</h5>
-                  <div class=""> 
-                    <label >Nombre: </label>
-                    <input type="text" 
-                    class="form-control mb-2" 
-                    id="inputName"
-                    placeholder = "Ingrese nombre"
-                    formControlName = "" required>
-                </div>
-                <div class="">
-                    <label >Contraseña: </label>
-                    <input type="password" 
-                    class="form-control mb-2" 
-                    id="inputPassword"
-                    placeholder = "Ingrese contraseña"
-                    formControlName = "" required>
-                </div>
+  <div class="container"><br><br><br>
+    <div class="row offset-md-3 col-md-6">
+        <div class="card w-100">
+            <div class="card-body">
+                <h5 class="card-title text-center">Registro Usuario Nuevo</h5>
+                <form [formGroup] = "registroForm" (ngSubmit)="registro()" autocomplete = "on">
+                    <div class="form-group"> 
+                        <label >Nombre: </label> 
+                        <input type="text" class="form-control mb-2" id="inputName" placeholder = "Ingrese nombre" formControlName = "nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label >Apellido: </label>
+                        <input type="text" class="form-control mb-2" id="inputLastName" placeholder = "Ingrese apellido" formControlName = "apellido" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email: </label>
+                        <input type="text" class="form-control mb-2" id="inputEmail4"placeholder = "Ingrese email"formControlName = "email" required>  
+                    </div>
+                        <div class="form-group">
+                        <label >Contraseña: </label>
+                        <input type="password" class="form-control mb-2" id="inputPassword"placeholder = "Ingrese contraseña"formControlName = "password" autocomplete="section-blue shipping current-password" required>
+                    </div>
                     <br>
-                  <a href="#" class="btn btn-outline-primary btn-block">Iniciar sesiòn</a>
-                </div>
-              </div>
+                    <button type="submit" class="btn btn-outline-primary btn-block mb-2">Registrarme</button>
+                </form>
+                
+            </div>
+        </div>
     </div>
 </div>
-</div>
+
 

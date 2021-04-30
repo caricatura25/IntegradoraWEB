@@ -43,7 +43,7 @@ const routes: Routes = [
     {path:'cochera', component:CocheraComponent},
     {path:'alarma', component:AlarmaComponent},
     {path:'luz',component:ControlesComponent},
-    {path:'registro/invitado',component:RegInvitadoComponent},
+    {path:'regnuevo',component:RegInvitadoComponent},
     {path:'invitados',component:InterInvitadosComponent},
     {path:'dispositivos',component:DispositivosComponent},
     {path:'regras',component:RegistrorasComponent},
