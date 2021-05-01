@@ -21,15 +21,12 @@ import { InterHumedadComponent } from './Component/inter-humedad/inter-humedad.c
 import { InterControlesComponent } from './Component/inter-controles/inter-controles.component';
 import { InterInvitadosComponent } from './Component/inter-invitados/inter-invitados.component';
 import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-temperatura.component';
-import {InterMenuR} from './Component/inter-menu-r/inter-menu-r.component';
+import { InterMenuRComponent } from './Component/inter-menu-r/inter-menu-r.component';
 import { MenuRComponent } from './Component/menu-r/menu-r.component';
 import { RegistrorasComponent } from './Component/registroras/registroras.component';
-<<<<<<< HEAD
+import { RasexisComponent} from './Component/rasexis/rasexis.component';
 import { from } from 'rxjs';
 
-=======
-import { RasexisComponent } from './Component/rasexis/rasexis.component';
->>>>>>> ee9347d5c18beb7944ad74dfcbc580985ba6b4cb
 
 
 
@@ -43,7 +40,7 @@ const routes: Routes = [
     {path:'login', component:LoginComponent},
     {path:'temperatura',component:InterTemperaturaComponent},
     {path:'controles',component:InterControlesComponent},
-    {path:'MenuR',component:InterMenuR},
+    {path:'MenuR',component:InterMenuRComponent},
     {path:'registro', component:RegistroComponent},
     {path:'Humedad',component:InterHumedadComponent},
     {path:'menu', component:MenuComponent},
