@@ -34,11 +34,7 @@ import { ChartsModule } from 'ng2-charts';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { MenuRComponent } from './Component/menu-r/menu-r.component';
 import {RegistrorasComponent} from  './Component/registroras/registroras.component';
-<<<<<<< HEAD
-import { InterMenuRComponent } from './Component/inter-menu-r/inter-menu-r.component';
-=======
 import { RasexisComponent } from './Component/rasexis/rasexis.component';
->>>>>>> ee9347d5c18beb7944ad74dfcbc580985ba6b4cb
 
 
 
@@ -69,11 +65,7 @@ import { RasexisComponent } from './Component/rasexis/rasexis.component';
     InterControlesComponent,
     InterInvitadosComponent,
     MenuRComponent,
-<<<<<<< HEAD
-    InterMenuRComponent
-=======
     RasexisComponent
->>>>>>> ee9347d5c18beb7944ad74dfcbc580985ba6b4cb
   ],
   imports: [
     BrowserModule,
