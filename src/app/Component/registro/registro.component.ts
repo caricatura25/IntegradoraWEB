@@ -26,7 +26,7 @@ export class RegistroComponent implements OnInit {
       console.log(data)
       this.router.navigateByUrl('/login');
     }, error =>{
-      alert("No se pudo completar el registro")
+      alert("Nombre o email ya registrados")
       console.log("Registro error")
       console.log(error)
     });
