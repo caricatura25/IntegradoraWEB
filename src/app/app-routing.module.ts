@@ -1,5 +1,4 @@
-/* MODULOS */
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 /* COMPONENTES */
 import { RegistroComponent } from './Component/registro/registro.component';
@@ -15,9 +14,12 @@ import { DispositivosComponent } from './Component/dispositivos/dispositivos.com
 import { InterHumedadComponent } from './Component/inter-humedad/inter-humedad.component';
 import { InterControlesComponent } from './Component/inter-controles/inter-controles.component';
 import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-temperatura.component';
+import { InterMenuRComponent } from './Component/inter-menu-r/inter-menu-r.component';
 import { MenuRComponent } from './Component/menu-r/menu-r.component';
 import { RegistrorasComponent } from './Component/registroras/registroras.component';
-import { RasexisComponent } from './Component/rasexis/rasexis.component';
+import { RasexisComponent} from './Component/rasexis/rasexis.component';
+import { from } from 'rxjs';
+
 
 
 
@@ -40,7 +42,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

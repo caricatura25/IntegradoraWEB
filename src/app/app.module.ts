@@ -31,6 +31,7 @@ import { InterInvitadosComponent } from './Component/inter-invitados/inter-invit
 import { MenuRComponent } from './Component/menu-r/menu-r.component';
 import {RegistrorasComponent} from  './Component/registroras/registroras.component';
 import { RasexisComponent } from './Component/rasexis/rasexis.component';
+import { InterMenuRComponent } from './Component/inter-menu-r/inter-menu-r.component';
 
 
 
@@ -58,7 +59,8 @@ import { RasexisComponent } from './Component/rasexis/rasexis.component';
     InterControlesComponent,
     InterInvitadosComponent,
     MenuRComponent,
-    RasexisComponent
+    RasexisComponent,
+    InterMenuRComponent
   ],
   imports: [
     BrowserModule,
