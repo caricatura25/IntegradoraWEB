@@ -27,7 +27,7 @@ const routes: Routes = [
     {path:'', component:LoginComponent},
     {path:'login', component:LoginComponent},
     {path:'registro', component:RegistroComponent},
-    {path:'raspberry',component:MenuRComponent},
+    {path:'raspberry',component:InterMenuRComponent},
     {path:'raspberry/dispositivos',component:MenuComponent},
     {path:'raspberry/dispositivos/temperatura',component:InterTemperaturaComponent},
     {path:'raspberry/dispositivos/controles',component:InterControlesComponent},

@@ -3,7 +3,7 @@
     <a class="navbar-brand" href="../menu">
         <i class="fas fa-laptop-house" style="color: blue; "></i>
     </a>
-    <a class="navbar-brand" routerLink="/menuR">Inicio</a>
+    <a class="navbar-brand" routerLink="/raspberry">Inicio</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -11,10 +11,10 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" routerLink="../menu" >Menu dispositivos</a>
+                <a class="nav-link active" aria-current="page" routerLink="/raspberry/dispositivos" >Menu dispositivos</a>
             </li> 
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" routerLink="/dispositivos" *ngIf="!invited">Añadir dispositivo</a>
+                <a class="nav-link active" aria-current="page" routerLink="/agregar/dispositivo" *ngIf="!invited">Añadir dispositivo</a>
             </li>
           
         </ul>
