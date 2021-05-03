@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CheckTokenService } from 'src/app/Services/check-token.service';
+import { environment } from 'src/environments/environment.prod';
+
 
 @Component({
   selector: 'app-menu-r',
@@ -7,9 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuRComponent implements OnInit {
 
-  constructor() { }
+  constructor(private check:CheckTokenService) { }
 
   ngOnInit(): void {
+    this.check.checkToken()
   }
 
 }

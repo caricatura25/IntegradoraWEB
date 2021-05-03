@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from "ngx-cookie-service";
+import { CheckTokenService } from 'src/app/Services/check-token.service';
 import { ServiciosService } from 'src/app/servicios.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -13,24 +14,23 @@ export class NavBarComponent implements OnInit {
   public invited:Boolean =  environment.invited;
   public name:String =  environment.name;
   
-  constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
+  constructor(private cookies: CookieService,public router: Router,private api: ServiciosService,private check: CheckTokenService) { }
 
   ngOnInit(): void {
-    this.checkToken()
+    this.check.checkToken()
+    //this.checkToken()
   }
 
   cerrarSesion(){
     console.log("Cerrando Sesion...")
 
     this.cookies.delete("token")
-    environment.invited=false
     environment.name=null
 
-    console.log("Token eliminado")
     this.router.navigateByUrl('/login');
   }
 
-  checkToken(){
+  /* checkToken(){
     console.log("Verificando Token-- CheckToken()")
     
     this.api.check().subscribe(data => {
@@ -51,6 +51,6 @@ export class NavBarComponent implements OnInit {
         console.log(error)
     });
     
-  }
+  } */
 
 }

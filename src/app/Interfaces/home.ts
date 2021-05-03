@@ -1,6 +1,5 @@
-export interface User {
-    usuario_id: number
-    home: number
+export interface Home {
+    home_id: number
     nombre: string
     apellido: string
     email: string
