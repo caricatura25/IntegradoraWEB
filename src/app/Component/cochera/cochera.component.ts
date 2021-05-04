@@ -5,6 +5,7 @@ import { ServiciosService } from 'src/app/servicios.service';
 import { environment } from 'src/environments/environment.prod';
 import Ws from '@adonisjs/websocket-client';
 import { Cochera } from 'src/app/Interfaces/cochera';
+import { CheckTokenService } from 'src/app/Services/check-token.service';
 
 @Component({
   selector: 'app-cochera',
@@ -16,35 +17,12 @@ export class CocheraComponent implements OnInit, OnDestroy {
   public cochera:Cochera
   ws: any;
   chat: any;
-  constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
+  constructor(private check: CheckTokenService,private cookies: CookieService,public router: Router,private api: ServiciosService) { }
 
   ngOnInit(): void {
-    this.checkToken()
+    this.check.checkToken()
   }
 
-
-  checkToken(){
-    console.log("Verificando Token-- CheckToken()")
-    this.api.check().subscribe(data => {
-        if(data.status){
-            console.log("Autorizado User")
-            this.peticionsensor()
-        }else if(environment.invited){
-            console.log("Autorizado Invitado")
-            this.peticionsensor()
-        }else{
-            console.log("No autorizado")
-            environment.invited = false
-            this.cookies.delete("token")
-            this.router.navigateByUrl('/login');
-        }
-    }, error =>{
-        alert("No se pudo completar el registro")
-        console.log("Registro error")
-        console.log(error)
-    });
-    
-  }
 
   connect_ws(){
     this.ws = Ws(environment.wsURL); //ruta de mi web socket

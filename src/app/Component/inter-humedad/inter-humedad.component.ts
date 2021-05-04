@@ -9,6 +9,7 @@ import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import Ws from '@adonisjs/websocket-client';
 import { NgxSpinnerService } from "ngx-spinner";
+import { CheckTokenService } from 'src/app/Services/check-token.service';
 
 
 
@@ -89,10 +90,10 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
   };
 
  
-  constructor(private Hum: ServiciosService,private cookies: CookieService,public router: Router, private spinner: NgxSpinnerService) { }
+  constructor(private check: CheckTokenService,private Hum: ServiciosService,private cookies: CookieService,public router: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-  this.checkToken()
+  this.check.checkToken()
   this.spinner.show();
   setTimeout(() => {
     /** spinner ends after 4 seconds */
@@ -175,32 +176,6 @@ graficaHumedad(){
       console.log("Error peticion datos Temperatura")
       console.log(error)
     });
-  }
-
-
-  
-  checkToken(){
-    console.log("Verificando Token-- CheckToken()")
-    
-    this.Hum.check().subscribe(data => {
-        if(data.status){
-            console.log("Autorizado User")
-            this.connect_ws()
-        }else if(environment.invited){
-            console.log("Autorizado Invitado")
-            this.connect_ws()
-        }else{
-            console.log("No autorizado")
-            environment.invited = false
-            this.cookies.delete("token")
-            this.router.navigateByUrl('/login');
-        }
-    }, error =>{
-        alert("No se pudo completar el registro")
-        console.log("Registro error")
-        console.log(error)
-    });
-    
   }
 
   ngOnDestroy(){

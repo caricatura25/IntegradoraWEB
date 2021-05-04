@@ -10,6 +10,7 @@ import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts'; 
 import { NgxSpinner } from 'ngx-spinner/lib/ngx-spinner.enum';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { CheckTokenService } from 'src/app/Services/check-token.service';
 
 
 
@@ -91,10 +92,10 @@ export class InterTemperaturaComponent implements OnInit,OnDestroy {
 
   temperatura: string;
 
-  constructor(private api: ServiciosService, public router: Router, public cookies:CookieService, private spinner: NgxSpinnerService) { }
+  constructor(private check: CheckTokenService,private api: ServiciosService, public router: Router, public cookies:CookieService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    this.checkToken()
+    this.check.checkToken()
     this.spinner.show();
   setTimeout(() => {
     /** spinner ends after 5 seconds */
@@ -179,29 +180,7 @@ export class InterTemperaturaComponent implements OnInit,OnDestroy {
     
   }
 
-
-  checkToken(){
-    console.log("Verificando Token-- CheckToken()")
-    
-    this.api.check().subscribe(data => {
-        if(data.status){
-            console.log("Autorizado User")
-        }else if(environment.invited){
-            console.log("Autorizado Invitado")
-        }else{
-            console.log("No autorizado")
-            environment.invited = false
-            this.cookies.delete("token")
-            this.router.navigateByUrl('/login');
-        }
-    }, error =>{
-        alert("No se pudo completar el registro")
-        console.log("Registro error")
-        console.log(error)
-    });
-    
-  }
-   public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
     console.log(event, active);
   }
 

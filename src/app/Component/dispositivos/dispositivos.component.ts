@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { CheckTokenService } from 'src/app/Services/check-token.service';
 import { ServiciosService } from 'src/app/servicios.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -15,12 +16,12 @@ export class DispositivosComponent implements OnInit {
   public pines:Array<Number>
   dispositivoForm:FormGroup; 
   request: Object
-  constructor(private fb:FormBuilder,private cookies: CookieService,public router: Router,private api: ServiciosService) { 
+  constructor(private check: CheckTokenService,private fb:FormBuilder,private cookies: CookieService,public router: Router,private api: ServiciosService) { 
     this.crForm();
   }
 
   ngOnInit(): void {
-    this.checkToken()
+    this.check.checkToken()
     this.peticionpines()
   }
   peticionpines(){

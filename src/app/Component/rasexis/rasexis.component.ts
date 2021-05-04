@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CheckTokenService } from 'src/app/Services/check-token.service';
 
 @Component({
   selector: 'app-rasexis',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RasexisComponent implements OnInit {
 
-  constructor() { }
+  constructor(private check: CheckTokenService) { }
 
   ngOnInit(): void {
+    this.check.checkToken()
   }
 
 }
