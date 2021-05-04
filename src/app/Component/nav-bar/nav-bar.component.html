@@ -10,13 +10,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" routerLink="/raspberry/dispositivos" >Menu dispositivos</a>
-            </li> 
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="rasp_lenght > 0">
+                <a class="nav-link active" aria-current="page" routerLink="/raspberry/dispositivos">Menu dispositivos</a>
+            </li>
+            <li class="nav-item" *ngIf="rasp_lenght > 0">
                 <a class="nav-link active" aria-current="page" routerLink="/agregar/dispositivo" *ngIf="!invited">Añadir dispositivo</a>
             </li>
-          
+
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex bg-secondary">
             <li class="nav-item dropdown bg-secondary">

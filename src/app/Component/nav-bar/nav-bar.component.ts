@@ -12,13 +12,16 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class NavBarComponent implements OnInit {
   public invited:Boolean =  environment.invited;
-  public name:String =  environment.name;
+  public name:String = "";
   
-  constructor(private cookies: CookieService,public router: Router,private api: ServiciosService,private check: CheckTokenService) { }
+  constructor(private cookies: CookieService,public router: Router,private api: ServiciosService,private check: CheckTokenService, private service: ServiciosService) { }
+
+  public rasp_lenght = 0;
 
   ngOnInit(): void {
     this.check.checkToken()
-    //this.checkToken()
+    this.getRasp();
+    this.checkToken()
   }
 
   cerrarSesion(){
@@ -30,13 +33,25 @@ export class NavBarComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  /* checkToken(){
+  
+  getRasp() {  
+    // console.log(environment.home_id);
+  this.service.getRaspberry({home_id: 1}).subscribe(res => {
+      console.log(res);
+      this.rasp_lenght = res.length;
+  });
+}
+
+  checkToken(){
     console.log("Verificando Token-- CheckToken()")
     
     this.api.check().subscribe(data => {
+      console.log('data',data);
         if(data.status){
           environment.name = data.user.nombre
+          this.name = environment.name;
             console.log("Autorizado User")
+
         }else if(environment.invited){
             console.log("Autorizado Invitado")
         }else{
@@ -51,6 +66,6 @@ export class NavBarComponent implements OnInit {
         console.log(error)
     });
     
-  } */
+  } 
 
 }
