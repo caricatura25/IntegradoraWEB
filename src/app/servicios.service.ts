@@ -52,6 +52,10 @@ export class ServiciosService {
     return this.http.post<any>(`${this.apiURL}data/device`,request)
   }
 
+  getRaspberry(request: Object):any {
+    return this.http.post(`${this.apiURL}show/raspberries`, request);
+  }
+
   pending_invited():Observable<any>{
     return this.http.get<any>(`${this.apiURL}pending/invited`)
   }

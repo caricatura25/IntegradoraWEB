@@ -12,13 +12,11 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class NavBarComponent implements OnInit {
   public invited:Boolean =  environment.invited;
-  public name:String =  environment.name;
   
   constructor(private cookies: CookieService,public router: Router,private check: CheckTokenService) { }
 
   ngOnInit(): void {
     this.check.checkToken()
-    
   }
 
   cerrarSesion(){
@@ -30,5 +28,4 @@ export class NavBarComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  
 }

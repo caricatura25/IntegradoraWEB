@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ServiciosService } from '../../servicios.service';
+import { environment } from '../../../environments/environment.prod';
 import { CheckTokenService } from 'src/app/Services/check-token.service';
 
 @Component({
@@ -8,10 +11,16 @@ import { CheckTokenService } from 'src/app/Services/check-token.service';
 })
 export class InterMenuRComponent implements OnInit {
 
+
+
   constructor(private check: CheckTokenService) { }
 
   ngOnInit(): void {
     this.check.checkToken()
+    
   }
 
+  // /show/raspberries
+
+  
 }
