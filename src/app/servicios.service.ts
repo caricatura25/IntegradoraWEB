@@ -52,8 +52,28 @@ export class ServiciosService {
     return this.http.post<any>(`${this.apiURL}data/device`,request)
   }
 
+  nuevaRaspberry(request: Object):any {
+    return this.http.post(`${this.apiURL}register/raspberry`, request);
+  }
+
+  existenteRaspberry(request: Object):any {
+    return this.http.post(`${this.apiURL}register/raspberry/existing`, request);
+  }
+
+  removerRaspberry(request: Object):any {
+    return this.http.post(`${this.apiURL}delete/raspberry/home`, request);
+  }
+
+  eliminarRaspberry(request: Object):any {
+    return this.http.post(`${this.apiURL}delete/raspberry`, request);
+  }
+
   getRaspberry(request: Object):any {
     return this.http.post(`${this.apiURL}show/raspberries`, request);
+  }
+
+  getDispositivos(request: Object):any {
+    return this.http.post(`${this.apiURL}show/devices`, request);
   }
 
   pending_invited():Observable<any>{

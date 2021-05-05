@@ -21,32 +21,9 @@ export class ControlesComponent implements OnInit,OnDestroy {
   constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
 
   ngOnInit(): void {
-    this.checkToken()
+    
   }
 
-  checkToken(){
-    console.log("Verificando Token-- CheckToken()")
-    
-    this.api.check().subscribe(data => {
-        if(data.status){ 
-            console.log("Autorizado User")
-            this.connect_ws()
-        }else if(environment.invited){
-            console.log("Autorizado Invitado")
-            this.connect_ws()
-        }else{
-            console.log("No autorizado")
-            environment.invited = false
-            this.cookies.delete("token")
-            this.router.navigateByUrl('/login');
-        }
-    }, error =>{
-        alert("No se pudo completar el registro")
-        console.log("Registro error")
-        console.log(error)
-    });
-    
-  }
 
   connect_ws(){
     this.ws = Ws(environment.wsURL); //ruta de mi web socket

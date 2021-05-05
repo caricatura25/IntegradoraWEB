@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
 
-    <a class="navbar-brand" href="../menu">
+    <a class="navbar-brand" routerLink="/raspberry">
         <i class="fas fa-laptop-house" style="color: blue; "></i>
     </a>
     <a class="navbar-brand" routerLink="/raspberry">Inicio</a>
@@ -11,17 +11,17 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" routerLink="/raspberry/dispositivos">Menu dispositivos</a>
+                <a class="nav-link active" aria-current="page" routerLink="/agregar/raspberry" *ngIf="!menu_dispositivo">Añadir Raspberry</a>
             </li>
             <li class="nav-item" >
-                <a class="nav-link active" aria-current="page" routerLink="/agregar/dispositivo" *ngIf="!invited">Añadir dispositivo</a>
+                <a class="nav-link active" aria-current="page" routerLink="/agregar/dispositivo" *ngIf="menu_dispositivo">Añadir dispositivo</a>
             </li>
 
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex bg-secondary">
             <li class="nav-item dropdown bg-secondary">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Bienvenido: 
+                Bienvenido: {{nombre}}
             </a>
                 <div class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item " (click)="cerrarSesion()">Cerrar Sesion</a>

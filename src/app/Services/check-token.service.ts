@@ -15,6 +15,7 @@ export class CheckTokenService {
     
     this.api.check().subscribe(data => {
         if(data.status){
+          environment.nombre = data.user.nombre
           //environment.name = data.user.nombre //Guardo nombre del usuario
           console.log("Token valido")
         }else{

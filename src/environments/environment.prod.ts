@@ -7,9 +7,13 @@ export const environment = {
   /* Variables Home */
   home_id: null,
 
+  /* Variables Raspberry */
+  raspberry_id: null,
+
 
   /* Varaibles perdidas */
-  name: null,
+  menu_dispositivo: null,
+  nombre: null,
   session: false,
   invited: false
 };

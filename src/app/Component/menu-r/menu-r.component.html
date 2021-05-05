@@ -1,15 +1,70 @@
-
-
-    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-        <div class="col">   
-<div class="card m-l-50 m-t-30 border-info mb-3" style="width: 265px; " routerLink="/menu">
-    <h5 class="card-header" style="text-align: center;">Raspberry</h5>
-    <img src="../../../assets/img/splash.jpg" class="card-img-top" alt="...">
+<!-- <div class="card" style="width: 18rem;">
+    <img src="../../../assets/img/pi-cutout.png" class="card-img-top" alt="...">
     <div class="card-body">
-      <p class="card-text" style="text-align: center;">Ejemplo de como va</p>
+        <h5 class="card-title">Raspberry</h5>
+        <p class="card-text">{{raspberries.nombre}}</p>
     </div>
 </div>
-        </div>
- 
+&nbsp;&nbsp;&nbsp;&nbsp;   -->
+
+<div class="card bg-dark text-white">
+    <img src="../../../assets/img/pi-cutout.png" class="card-img ">
+    <div class="card-img-overlay">
+        <h5 class="card-title">Raspberry</h5>
+            <p class="card-text">{{raspberries.nombre}}</p>
     </div>
+</div>
+<div class="card-footer text-center">
+    <button type="button" class="btn btn-outline-primary" (click)="eventoRaspberry()">Ver dispositivos</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#staticBackdrop" >Mas opciones</button>
+</div>
+<br>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Opciones</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <b>Remover Raspberry: {{raspberries.nombre}}</b>
+            <p><i>Al remover la raspberry los dispositivos permanecerán intactos, podra añadirla nuevamente a una casa como raspberry exitente</i></p>
+            <button type="button" class="btn btn-outline-warning" (click)="removerRaspberry()" data-dismiss="modal">Remover Raspberry</button>
+            <hr>
+            <b>Eliminar Raspberry: {{raspberries.nombre}}</b>
+            <p><i>Al elimnar la raspberry los dispositivos se eliminaran, despues podra añadir la raspberry como si fuera nueva</i></p>
+            <button type="button" class="btn btn-outline-danger" (click)="eliminarRaspberry()" data-dismiss="modal">Eliminar Raspberry</button>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+<!-- <div class="col">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title text:center">Raspberry</h5> 
+        </div>
+        <div class="card-img">
+            <img src="../../../assets/img/pi-cutout.png" > 
+        </div>
+        <div class="card-footer">
+            <p class="card-text text-center">{{raspberries.nombre}}</p>
+        </div>
+    </div>  
+</div> -->
+
+
+
+
+
+
 

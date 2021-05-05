@@ -12,18 +12,28 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class NavBarComponent implements OnInit {
   public invited:Boolean =  environment.invited;
+  public nombre:String
+  public menu_dispositivo:Boolean
+
   
   constructor(private cookies: CookieService,public router: Router,private check: CheckTokenService) { }
 
   ngOnInit(): void {
     this.check.checkToken()
+    this.setEnvironment()
+  }
+
+  setEnvironment(){
+    this.nombre = environment.nombre;
+    this.menu_dispositivo =  environment.menu_dispositivo;
   }
 
   cerrarSesion(){
     console.log("Cerrando Sesion...")
 
     this.cookies.delete("token")
-    environment.name=null
+    environment.nombre = null
+    environment.home_id = null
 
     this.router.navigateByUrl('/login');
   }
