@@ -48,7 +48,7 @@ export class MenuComponent implements OnInit,OnDestroy {
   }
 
   ngOnDestroy(): void {
-    environment.menu_dispositivo = false
+    //environment.menu_dispositivo = false
 
     this.Cochera = false
     this.Foco = false

@@ -20,6 +20,7 @@ export class InterMenuRComponent implements OnInit {
 
   ngOnInit(): void {
     this.check.checkToken()
+    environment.menu_dispositivo = false
     this.getRaspberries()
   }
 

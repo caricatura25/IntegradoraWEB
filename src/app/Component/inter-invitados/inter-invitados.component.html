@@ -2,48 +2,24 @@
 <br>
 <br>
 
-<div class="container" *ngIf="!invited">
+<div class="container">
     <div class="row">
-        <div class="offset-md-3 col-md-6">
-            <h3 class="text-center">Invitados pedientes</h3><br>
-            <table class="table text-center table-striped" *ngIf='invi_pendien'>
+        <div class="offset-md-2 col-md-8">
+            <h3 class="text-center">Usuarios registrados</h3><br>
+            <div class="row text-center" *ngIf='!usuariosbool'><p>No hay usuarios registrados...</p></div>
+            <table class="table text-center table-striped" *ngIf='usuariosbool'>
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Fecha de peticion</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let invi_pend of invi_pendien">
-                        <td> {{invi_pend.nombre}}</td>
-                        <td>{{invi_pend.created_at |date:"short"}}</td>
-                        <td>
-                            <button type="button" class="btn btn-outline-success" (click)="aceptarInvitado(invi_pend)">Aceptar</button>&nbsp;
-                            <button type="button" class="btn btn-outline-danger" (click)="eliminarInvitado(invi_pend)" >Eliminar</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <br><br>
-    <div class="row">
-        <div class="offset-md-3 col-md-6">
-            <h3 class="text-center">Mis Invitados</h3><br>
-            <table class="table text-center table-striped" *ngIf='misinvitados'>
-                <thead>
-                    <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Fecha de ingreso</th>
+                        <th scope="col">Fecha de registro</th>
                         <th scope="col">Accion</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let invitado of misinvitados">
-                        <td>{{invitado.nombre}}</td>
-                        <td>{{invitado.updated_at |date:"short"}}</td>
-                        <td><button type="button" class="btn btn-outline-danger" (click)="eliminarInvitado(invitado)" >Eliminar</button></td>
+                    <tr *ngFor="let usuario of usuarios">
+                        <td>{{usuario.nombre}}</td>
+                        <td>{{usuario.created_at |date:"short"}}</td>
+                        <td><button type="button" class="btn btn-outline-danger" (click)="eliminarUsuario(usuario)" >Eliminar</button></td>
                     </tr>
                 </tbody>
             </table>

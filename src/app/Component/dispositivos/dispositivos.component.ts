@@ -42,7 +42,7 @@ export class DispositivosComponent implements OnInit {
     this.api.device(this.request).subscribe(data => {
       console.log("Se añadio nuevo dispositivo")
       console.log(data)
-      this.router.navigateByUrl('/controles');
+      this.router.navigateByUrl('/raspberry/dispositivos');
     }, error =>{
       console.log("Error peticiones add device")
       console.log(error)
