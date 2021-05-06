@@ -36,8 +36,9 @@ export class ServiciosService {
   temperatura(request: Object):Observable<any>{
     return this.http.post<any>(`${this.apiURL}data/device`,request)
   }
-  pines():Observable<any>{
-    return this.http.get<any>(`${this.apiURL}pines`)
+
+  pinesRaspberry(request: Object):Observable<any>{
+    return this.http.post<any>(`${this.apiURL}pines/raspberry`,request)
   }
 
   datos(request: Object):Observable<any>{
@@ -45,7 +46,7 @@ export class ServiciosService {
   }
 
   device(request: Object):Observable<any>{
-    return this.http.post<User>(`${this.apiURL}device`,request)
+    return this.http.post<User>(`${this.apiURL}register/device`,request)
   }
 
   humedad(request: Object):Observable<any>{

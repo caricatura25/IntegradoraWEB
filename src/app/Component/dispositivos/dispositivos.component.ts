@@ -25,7 +25,9 @@ export class DispositivosComponent implements OnInit {
     this.peticionpines()
   }
   peticionpines(){
-    this.api.pines().subscribe(data => {
+    const request = {raspberry_id: environment.raspberry_id }
+    console.log("Realizando peticion pines")
+    this.api.pinesRaspberry(request).subscribe(data => {
       this.pines = data
       console.log(data)
     }, error =>{
@@ -52,6 +54,7 @@ export class DispositivosComponent implements OnInit {
     var x = this.dispositivoForm.get('pin').value
     var y: number = +x;
     this.request = {
+      raspberry_id: environment.raspberry_id,
       nombre: this.dispositivoForm.get('nombre').value,
       descripcion: this.dispositivoForm.get('descripcion').value,
       tipo: this.dispositivoForm.get('tipo').value,
