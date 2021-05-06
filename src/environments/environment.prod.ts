@@ -9,6 +9,9 @@ export const environment = {
 
   /* Variables Raspberry */
   raspberry_id: null,
+  rasp_rasberry_id: null,
+  rasp_home_id: null,
+  rasp_nombre: null,
 
 
   /* Varaibles perdidas */

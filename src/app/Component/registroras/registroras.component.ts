@@ -23,6 +23,7 @@ export class RegistrorasComponent implements OnInit {
 
   nuevaRaspberry(){
     this.setNuevaRaspbery()
+    console.log(this.request)
     this.api.nuevaRaspberry(this.request).subscribe(data => {
       console.log(data)
       this.router.navigateByUrl('/raspberry')

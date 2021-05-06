@@ -35,10 +35,10 @@ export class RasexisComponent implements OnInit {
 
   setExistenteRaspberry() {
     var str = this.exRaspberryFrom.get('raspberry_id').value
-    var int: number = +str;
+    var i: number = +str;
     this.request = {
       home_id: environment.home_id,
-      raspberry_id: int,
+      raspberry_id: i,
       nombre: this.exRaspberryFrom.get('nombre').value,
     }
   }

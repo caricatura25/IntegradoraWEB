@@ -14,6 +14,8 @@ import { InterMenuRComponent } from '../inter-menu-r/inter-menu-r.component';
 })
 export class MenuRComponent implements OnInit {
   @Input() raspberries:Raspberry
+  public nombre
+
   constructor(private check:CheckTokenService,public router: Router,private api: ServiciosService,private inter_menu_r: InterMenuRComponent) { }
 
   ngOnInit(): void {
@@ -28,7 +30,7 @@ export class MenuRComponent implements OnInit {
   removerRaspberry(){
     
     console.log("Realizado peticion remover raspberry")
-    const request = {home_id:environment.home_id,raspberry_id:this.raspberries.raspberry_id}
+    const request = {home_id:environment.rasp_home_id,raspberry_id: environment.rasp_rasberry_id}
     this.api.removerRaspberry(request).subscribe(data => {
       console.log(data)
       this.inter_menu_r.getRaspberries()
@@ -41,7 +43,7 @@ export class MenuRComponent implements OnInit {
 
   eliminarRaspberry(){
     console.log("Realizado peticion eliminar raspberry")
-    const request = {raspberry_id: this.raspberries.raspberry_id}
+    const request = {raspberry_id: environment.rasp_rasberry_id}
     this.api.eliminarRaspberry(request).subscribe(data => {
       console.log(data)
       this.inter_menu_r.getRaspberries()
@@ -49,6 +51,20 @@ export class MenuRComponent implements OnInit {
       console.log("Error peticion eliminar raspberry")
       console.log(error)
     });
+  }
+
+
+  RaspberryID(){
+    environment.rasp_rasberry_id = this.raspberries.raspberry_id
+    environment.rasp_home_id = this.raspberries.home_id
+    environment.rasp_nombre = this.raspberries.nombre
+    this.nombre = environment.rasp_nombre
+
+    this.inter_menu_r.setRaspModal()
+
+    console.log(environment.rasp_rasberry_id)
+    console.log(environment.rasp_home_id)
+    console.log(environment.rasp_nombre)
   }
 
 }

@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl("/raspberry")
     }, error => {
       console.log("Login error")
+      console.log(error)
       if(error.status == 400){
         console.log("Bad request")
         alert("Email o password incorrectos")

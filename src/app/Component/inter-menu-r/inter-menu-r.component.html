@@ -1,7 +1,34 @@
 <app-nav-bar></app-nav-bar>
 <br>
 <div class="container">
+    <div class="text-center" *ngIf="ningunaRaspberry">No hay ninguna raspberry registrada...</div>
     <div class="row">
         <app-menu-r [raspberries]='raspberry' *ngFor='let raspberry of raspberries'></app-menu-r>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Opciones</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        <b>Remover Raspberry: {{raspModal_nombre}}</b>
+        <p><i>Al remover la raspberry los dispositivos permanecerán intactos, podra añadirla nuevamente a una casa como raspberry exitente</i></p>
+        <button type="button" class="btn btn-outline-warning"  data-dismiss="modal">Remover Raspberry</button>
+        <hr>
+        <b>Eliminar Raspberry: {{raspModal_nombre}}</b>
+        <p><i>Al elimnar la raspberry los dispositivos se eliminaran, despues podra añadir la raspberry como si fuera nueva</i></p>
+        <button type="button" class="btn btn-outline-danger"  data-dismiss="modal">Eliminar Raspberry</button>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+    </div>
     </div>
 </div>
