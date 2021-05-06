@@ -27,33 +27,6 @@ export class MenuRComponent implements OnInit {
     this.router.navigateByUrl('/raspberry/dispositivos')
   }
 
-  removerRaspberry(){
-    
-    console.log("Realizado peticion remover raspberry")
-    const request = {home_id:environment.rasp_home_id,raspberry_id: environment.rasp_rasberry_id}
-    this.api.removerRaspberry(request).subscribe(data => {
-      console.log(data)
-      this.inter_menu_r.getRaspberries()
-    }, error =>{
-      console.log("Error peticion remover raspberry")
-      console.log(error)
-    });
-    
-  }
-
-  eliminarRaspberry(){
-    console.log("Realizado peticion eliminar raspberry")
-    const request = {raspberry_id: environment.rasp_rasberry_id}
-    this.api.eliminarRaspberry(request).subscribe(data => {
-      console.log(data)
-      this.inter_menu_r.getRaspberries()
-    }, error =>{
-      console.log("Error peticion eliminar raspberry")
-      console.log(error)
-    });
-  }
-
-
   RaspberryID(){
     environment.rasp_rasberry_id = this.raspberries.raspberry_id
     environment.rasp_home_id = this.raspberries.home_id

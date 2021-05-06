@@ -38,12 +38,35 @@ export class InterMenuRComponent implements OnInit {
       console.log(error)
     });
   }
-
-
-
+  
   setRaspModal(){
     this.raspModal_id = environment.rasp_rasberry_id
     this.raspModal_home_id = environment.rasp_home_id
     this.raspModal_nombre = environment.rasp_nombre
+  }
+
+  removerRaspberry(){
+    console.log("Realizado peticion remover raspberry")
+    const request = {home_id: this.raspModal_home_id,raspberry_id: this.raspModal_id}
+    this.api.removerRaspberry(request).subscribe(data => {
+      console.log(data)
+      this.getRaspberries()
+    }, error =>{
+      console.log("Error peticion remover raspberry")
+      console.log(error)
+    });
+    
+  }
+
+  eliminarRaspberry(){
+    console.log("Realizado peticion eliminar raspberry")
+    const request = {raspberry_id: this.raspModal_id}
+    this.api.eliminarRaspberry(request).subscribe(data => {
+      console.log(data)
+      this.getRaspberries()
+    }, error =>{
+      console.log("Error peticion eliminar raspberry")
+      console.log(error)
+    });
   }
 }

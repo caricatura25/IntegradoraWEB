@@ -20,11 +20,11 @@
         <div class="modal-body">
         <b>Remover Raspberry: {{raspModal_nombre}}</b>
         <p><i>Al remover la raspberry los dispositivos permanecerán intactos, podra añadirla nuevamente a una casa como raspberry exitente</i></p>
-        <button type="button" class="btn btn-outline-warning"  data-dismiss="modal">Remover Raspberry</button>
+        <button type="button" class="btn btn-outline-warning"  (click)="removerRaspberry()" data-dismiss="modal">Remover Raspberry</button>
         <hr>
         <b>Eliminar Raspberry: {{raspModal_nombre}}</b>
         <p><i>Al elimnar la raspberry los dispositivos se eliminaran, despues podra añadir la raspberry como si fuera nueva</i></p>
-        <button type="button" class="btn btn-outline-danger"  data-dismiss="modal">Eliminar Raspberry</button>
+        <button type="button" class="btn btn-outline-danger"  (click)="eliminarRaspberry()" data-dismiss="modal">Eliminar Raspberry</button>
         </div>
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
