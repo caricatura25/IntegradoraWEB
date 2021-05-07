@@ -19,6 +19,7 @@ export class InterCocheraComponent implements OnInit {
 
   ngOnInit(): void {
     this.check.checkToken()
+    this.getCocheras()
   }
 
   getCocheras(){
