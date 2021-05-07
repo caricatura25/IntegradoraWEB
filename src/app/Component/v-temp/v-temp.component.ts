@@ -24,7 +24,7 @@ moment.locale('es');
 export class VTempComponent implements OnInit,OnDestroy {
   opciones;
   todayDate = new Date()
-  public invited:Boolean = environment.invited;
+
   public datos:Array<Dato>
   public sensor:Temperatura
   public datosGraf: ChartDataSets[] = [];
