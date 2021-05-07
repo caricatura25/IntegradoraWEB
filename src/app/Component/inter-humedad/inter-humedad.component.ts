@@ -23,10 +23,6 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
   
   public sensor:Humedad
   public datos:Array<Dato>
-  ws: any;
-  chat: any;
-  humedad: string
-  public sensoresH: Array<Dispositivo>
   public datosGraf: ChartDataSets[] = [];
   public datosGraf_length = 0;
 
@@ -90,7 +86,7 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
     },
   };
 
- 
+
   constructor(private check: CheckTokenService,private Hum: ServiciosService,private cookies: CookieService,public router: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
@@ -112,7 +108,7 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
     this.Hum.humedad(request).subscribe(data => {
       console.log("hecho")
       this.sensor = data
-      this.connect_ws()
+     
       this.peticiondatos()
       console.log(data)
     }, error =>{
@@ -121,23 +117,7 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
     });
   }
 
-  connect_ws(){
-    const opciones = {reconnection:true}
-    this.ws = Ws(environment.wsURL,opciones); //ruta de mi web socket
-
-    this.ws.connect(); //me conecto al ws
-    this.chat = this.ws.subscribe("wshum") //subscribo al canal
-    this.humedadsocket()
-  }
-
-
-  humedadsocket(){
-    this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
-
-    this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
-      this.humeActual = data
-    })
-  }
+  
 
 graficaHumedad(){
 
@@ -181,6 +161,6 @@ graficaHumedad(){
 
   ngOnDestroy(){
     console.log("Saliendo del componente")
-    this.ws.close()
+   
   }
 }

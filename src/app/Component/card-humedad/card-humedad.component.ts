@@ -24,7 +24,7 @@ export class CardHumedadComponent implements OnInit {
     console.log(request)
     this.api.deletedevice(request).subscribe(data => {
       console.log("hecho delete/device")
-      this.interHumedad.HUMEDAD()
+      this.interHumedad.getSensoresH()
       console.log(data)
     }, error =>{
       console.log("Eliminar Humedad error")
