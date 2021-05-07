@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./inter-controles.component.css']
 })
 export class InterControlesComponent implements OnInit {
-  public invited:Boolean =  environment.invited;
+  
   constructor(private check: CheckTokenService,private api: ServiciosService,private cookies: CookieService,public router: Router) { }
 
   ngOnInit(): void {
@@ -25,8 +25,9 @@ export class InterControlesComponent implements OnInit {
 
   focospeticion(){
     console.log("realizando peticion")
-    this.api.focos().subscribe(data => {
-      console.log("hecho")
+    const request = {raspberry_id: environment.raspberry_id, tipo: "Foco"}
+    this.api.getDispositivosTipo(request).subscribe(data => {
+      console.log("Realizado peticion focos")
       this.focos = data
       console.log(data)
     }, error =>{

@@ -19,7 +19,7 @@ import { CheckTokenService } from 'src/app/Services/check-token.service';
   styleUrls: ['./inter-humedad.component.css']
 })
 export class InterHumedadComponent implements OnInit,OnDestroy {
-  public invited:Boolean =  environment.invited;
+  
   public sensor:Humedad
   public datos:Array<Dato>
   ws: any;

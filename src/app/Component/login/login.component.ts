@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -13,13 +13,17 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit,OnDestroy {
   email: String;
   password: String;
+  nombre: String
   loginForm:FormGroup; //Variable para validar forms
   
   constructor(private api: ServiciosService,private fb:FormBuilder,public router: Router,private cookies: CookieService) {
     this.logForm();
+  }
+  ngOnDestroy(): void {
+    environment.nombre = this.nombre
   }
 
   ngOnInit(): void {
@@ -47,7 +51,16 @@ export class LoginComponent implements OnInit {
     
     this.api.login(request).subscribe(data => {
       console.log("Sesion valida")
-      environment.home_id = data.home.home_id
+      
+      if(data.home.home_id == null){
+        console.log("home_id es null")
+        environment.home_id = data.home.home
+        environment.usuario = true
+      }else{
+        console.log("home es null")
+        environment.home_id = data.home.home_id
+      }
+      this.nombre = data.home.nombre
       this.api.setToken(data.token.token);
       this.router.navigateByUrl("/raspberry")
     }, error => {

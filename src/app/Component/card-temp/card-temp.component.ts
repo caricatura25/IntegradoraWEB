@@ -15,6 +15,7 @@ import Ws from '@adonisjs/websocket-client';
   styleUrls: ['./card-temp.component.css']
 })
 export class CardTempComponent implements OnInit {
+<<<<<<< HEAD
   sensores:Temperatura
   public invited:Boolean =  environment.invited;
   public tempActual:String = null;
@@ -25,6 +26,10 @@ export class CardTempComponent implements OnInit {
   chat: any;
 
   temperatura: string;
+=======
+  @Input() sensores:Temperatura
+
+>>>>>>> aefbb322050fd24927c824502615a66b19d77e60
   constructor(private api: ServiciosService, private interTemp: InterTemperaturaComponent) {
   }
 

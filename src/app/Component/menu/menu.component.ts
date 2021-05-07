@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit,OnDestroy {
-  public invited:Boolean =  environment.invited;
+  
   public Temp_Hum: Boolean = false
   public Foco: Boolean = false
   public Cochera: Boolean = false
@@ -48,7 +48,7 @@ export class MenuComponent implements OnInit,OnDestroy {
   }
 
   ngOnDestroy(): void {
-    environment.menu_dispositivo = false
+    //environment.menu_dispositivo = false
 
     this.Cochera = false
     this.Foco = false

@@ -16,7 +16,7 @@
 </div>
 <div class="card-footer text-center">
     <button type="button" class="btn btn-outline-primary" (click)="eventoRaspberry()" >Ver dispositivos</button>&nbsp;&nbsp;&nbsp;&nbsp;
-    <button type="button" class="btn btn-outline-dark" (click)="RaspberryID()" data-toggle="modal" data-target="#staticBackdrop" >Mas opciones</button>
+    <button *ngIf="!usuario" type="button" class="btn btn-outline-dark" (click)="RaspberryID()" data-toggle="modal" data-target="#staticBackdrop" >Mas opciones</button>
 </div>
 <br>
 

@@ -13,7 +13,6 @@ import { InterHumedadComponent } from '../inter-humedad/inter-humedad.component'
 export class CardHumedadComponent implements OnInit {
   @Input() sensores:Humedad
   
-  public invited:Boolean =  environment.invited;
 
   constructor(private api: ServiciosService,private interHumedad: InterHumedadComponent) { }
 

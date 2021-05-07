@@ -57,6 +57,14 @@ export class ServiciosService {
     return this.http.post(`${this.apiURL}register/raspberry`, request);
   }
 
+  nuevoUsuario(request: Object):any {
+    return this.http.post(`${this.apiURL}register/user`, request);
+  }
+
+  eliminarUsuario(request: Object):any {
+    return this.http.post(`${this.apiURL}delete/user`, request);
+  }
+
   existenteRaspberry(request: Object):any {
     return this.http.post(`${this.apiURL}register/raspberry/existing`, request);
   }
@@ -77,17 +85,14 @@ export class ServiciosService {
     return this.http.post(`${this.apiURL}show/devices`, request);
   }
 
-  pending_invited():Observable<any>{
-    return this.http.get<any>(`${this.apiURL}pending/invited`)
+  getUsuarios(request: Object):any {
+    return this.http.post(`${this.apiURL}show/users`, request);
   }
 
-  invited():Observable<any>{
-    return this.http.get<any>(`${this.apiURL}invited`)
+  getDispositivosTipo(request: Object):any {
+    return this.http.post(`${this.apiURL}show/devices/type`, request);
   }
 
-  deleteinvited(request: Object):Observable<any>{
-    return this.http.post<User>(`${this.apiURL}delete/invited`,request)
-  }
 
   deletedevice(request: Object):Observable<any>{
     return this.http.post<User>(`${this.apiURL}delete/device`,request)

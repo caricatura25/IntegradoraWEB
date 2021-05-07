@@ -1,11 +1,15 @@
 
-  <app-nav-bar></app-nav-bar>
-  <div class="container"><br><br><br>
-    <div class="row offset-md-3 col-md-6">
+<app-nav-bar></app-nav-bar>
+<button type="button" class="btn btn-outline-secondary">Secondary</button>
+<div class="container"><br><br><br>
+    <div class="row">
+        <div class="col-md-3">Hola <b>{{nombre}}</b>, Este es el apartado de registro de usuario.<br> Para que alguien mas pueda controlar tus dispositivos deberás registrarlo como usuario, posterior mente este usuario iniciara sesión y tendrá accedo todos tus dispositivos.</div>
+    <div class="offset-md-3 col-md-6">
+        
         <div class="card w-100">
             <div class="card-body">
-                <h5 class="card-title text-center">Registro Usuario Nuevo</h5>
-                <form  autocomplete = "on">
+                <h5 class="card-title text-center">Registra un Usuario</h5>
+                <form  [formGroup] = "usuarioFrom" (ngSubmit)="nuevoUsuario()" autocomplete = "on">
                     <div class="form-group"> 
                         <label >Nombre: </label> 
                         <input type="text" class="form-control mb-2" id="inputName" placeholder = "Ingrese nombre" formControlName = "nombre" required>
@@ -28,6 +32,7 @@
                 
             </div>
         </div>
+    </div>
     </div>
 </div>
 

@@ -15,7 +15,7 @@ import { InterControlesComponent } from '../inter-controles/inter-controles.comp
 })
 export class ControlesComponent implements OnInit,OnDestroy {
   @Input() focos:Foco
-  public invited:Boolean =  environment.invited;
+  
   ws: any;
   chat: any;
   constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }

@@ -16,10 +16,10 @@ import { InterHumedadComponent } from './Component/inter-humedad/inter-humedad.c
 import { InterControlesComponent } from './Component/inter-controles/inter-controles.component';
 import { InterTemperaturaComponent } from './Component/inter-temperatura/inter-temperatura.component';
 import { InterMenuRComponent } from './Component/inter-menu-r/inter-menu-r.component';
-import { MenuRComponent } from './Component/menu-r/menu-r.component';
 import { RegistrorasComponent } from './Component/registroras/registroras.component';
 import { RasexisComponent} from './Component/rasexis/rasexis.component';
-import { from } from 'rxjs';
+import { RegInvitadoComponent } from './Component/reg-invitado/reg-invitado.component';
+import { InterInvitadosComponent } from './Component/inter-invitados/inter-invitados.component';
 
 
 
@@ -37,6 +37,8 @@ const routes: Routes = [
     {path:'raspberry/dispositivos/cochera', component:CocheraComponent},
     {path:'raspberry/dispositivos/alarma', component:AlarmaComponent},
     {path:'agregar/dispositivo',component:DispositivosComponent},
+    {path:'agregar/usuario',component:RegInvitadoComponent},
+    {path:'usuarios',component:InterInvitadosComponent},
     {path:'agregar/raspberry',component:RegistrorasComponent},
     {path:'agregar/raspberry/existente',component:RasexisComponent},
     {path:'raspberry/dispositivos/temperatura/vtemp', component:VTempComponent},

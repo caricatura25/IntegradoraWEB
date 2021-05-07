@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Invitado } from 'src/app/Interfaces/invitado';
+import { User } from 'src/app/Interfaces/user';
 import { CheckTokenService } from 'src/app/Services/check-token.service';
 import { ServiciosService } from 'src/app/servicios.service';
 import { environment } from 'src/environments/environment.prod';
@@ -12,77 +13,48 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./inter-invitados.component.css']
 })
 export class InterInvitadosComponent implements OnInit {
-  public invited:Boolean =  environment.invited;
-  constructor(private cookies: CookieService,public router: Router,private api: ServiciosService,private check: CheckTokenService) { }
   
-  public invi_pendien:Array<Invitado>
-  public misinvitados:Array<Invitado>
+  constructor(public router: Router,private api: ServiciosService,private check: CheckTokenService) { }
+
+  public usuarios:Array<User>
+  public usuariosbool:Boolean
   
 
   ngOnInit(): void {
     this.check.checkToken()
-
-    this.invi_pendientes()
-    this.invitados()
+    this.peticionUsuarios()
   }
 
-  invi_pendientes(){
-    console.log("realizando peticion pending/invited")
-    this.api.pending_invited().subscribe(data => {
-      console.log("hecho pending/invited")
-      this.invi_pendien = data
+  peticionUsuarios(){
+    console.log("Realizando peticion mostrar usuarios")
+    const request = {home: environment.home_id}
+    this.api.getUsuarios(request).subscribe(data => {
+      this.usuarios = data
+      if(this.usuarios.length <= 0){
+        this.usuariosbool = false
+      }else{
+        this.usuariosbool = true
+      }
       console.log(data)
     }, error =>{
-      console.log("Error peticion pending/invited")
+      console.log("Error peticion usuarios")
       console.log(error)
     });
   }
 
-  invitados(){
-    console.log("realizando peticion /invited")
-    this.api.invited().subscribe(data => {
-      console.log("hecho /invited")
-      this.misinvitados = data
-      console.log(data)
-    }, error =>{
-      console.log("Error peticion /invited")
-      console.log(error)
-    });
-  }
 
-  aceptarInvitado(invitado){
-    console.log("Aceptando invitado...")
-    const request = {invitado_id: invitado.invitado_id}
+  eliminarUsuario(usuario){
+    console.log("Eliminando usuario...")
+    const request = {home: environment.home_id,usuario_id: usuario.usuario_id}
     console.log(request)
-    this.api.acceptinvited(request).subscribe(data => {
-      console.log("hecho request/invited")
+    this.api.eliminarUsuario(request).subscribe(data => {
+      console.log("Respuesta eliminar usuario")
       console.log(data)
-      
-      this.invitados()
-      this.invi_pendientes() 
+      this.peticionUsuarios()
     }, error =>{
-      console.log("Error peticion request/invited")
+      console.log("Error peticion eliminar usuario")
       console.log(error)
     });
-
-    
-    
-  }
-
-  eliminarInvitado(invitado){
-    console.log("Eliminando invitado...")
-    const request = {nombre: invitado.nombre}
-    console.log(request)
-    this.api.deleteinvited(request).subscribe(data => {
-      console.log("hecho delete/invited")
-      console.log(data)
-    }, error =>{
-      console.log("Error peticion delete/invited")
-      console.log(error)
-    });
-
-    this.invitados() 
-    this.invi_pendientes()
   }
 
 
