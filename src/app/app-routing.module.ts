@@ -20,6 +20,7 @@ import { RegistrorasComponent } from './Component/registroras/registroras.compon
 import { RasexisComponent} from './Component/rasexis/rasexis.component';
 import { RegInvitadoComponent } from './Component/reg-invitado/reg-invitado.component';
 import { InterInvitadosComponent } from './Component/inter-invitados/inter-invitados.component';
+import { VHumedadComponent } from './Component/v-humedad/v-humedad.component';
 
 
 
@@ -42,6 +43,7 @@ const routes: Routes = [
     {path:'agregar/raspberry',component:RegistrorasComponent},
     {path:'agregar/raspberry/existente',component:RasexisComponent},
     {path:'raspberry/dispositivos/temperatura/vtemp', component:VTempComponent},
+    {path:'raspberry/dispositivos/humedad/vhumedad', component:VHumedadComponent},
     {path:'**',component:Error404Component}
     
 ];

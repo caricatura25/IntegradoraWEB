@@ -10,23 +10,23 @@ import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import Ws from '@adonisjs/websocket-client';
 import { NgxSpinnerService } from "ngx-spinner";
 import { CheckTokenService } from 'src/app/Services/check-token.service';
-import { Dispositivo } from 'src/app/Interfaces/dispositivo';
 
 
 
 @Component({
-  selector: 'app-inter-humedad',
-  templateUrl: './inter-humedad.component.html',
-  styleUrls: ['./inter-humedad.component.css']
+  selector: 'app-v-humedad',
+  templateUrl: './v-humedad.component.html',
+  styleUrls: ['./v-humedad.component.css']
 })
-export class InterHumedadComponent implements OnInit,OnDestroy {
+export class VHumedadComponent implements OnInit,OnDestroy {
+
   
   public sensor:Humedad
   public datos:Array<Dato>
   ws: any;
   chat: any;
   humedad: string
-  public sensoresH: Array<Dispositivo>
+
   public datosGraf: ChartDataSets[] = [];
   public datosGraf_length = 0;
 

@@ -33,6 +33,7 @@ import {RegistrorasComponent} from  './Component/registroras/registroras.compone
 import { RasexisComponent } from './Component/rasexis/rasexis.component';
 import { InterMenuRComponent } from './Component/inter-menu-r/inter-menu-r.component';
 import { VTempComponent } from './Component/v-temp/v-temp.component';
+import { VHumedadComponent } from './Component/v-humedad/v-humedad.component';
 
 
 
@@ -62,7 +63,8 @@ import { VTempComponent } from './Component/v-temp/v-temp.component';
     MenuRComponent,
     RasexisComponent,
     InterMenuRComponent,
-    VTempComponent
+    VTempComponent,
+    VHumedadComponent
   ],
   imports: [
     BrowserModule,
