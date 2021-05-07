@@ -51,7 +51,15 @@ export class LoginComponent implements OnInit,OnDestroy {
     
     this.api.login(request).subscribe(data => {
       console.log("Sesion valida")
-      environment.home_id = data.home.home_id
+      
+      if(data.home.home_id == null){
+        console.log("home_id es null")
+        environment.home_id = data.home.home
+        environment.usuario = true
+      }else{
+        console.log("home es null")
+        environment.home_id = data.home.home_id
+      }
       this.nombre = data.home.nombre
       this.api.setToken(data.token.token);
       this.router.navigateByUrl("/raspberry")

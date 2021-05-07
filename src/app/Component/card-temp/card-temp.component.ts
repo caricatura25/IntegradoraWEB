@@ -13,7 +13,7 @@ import { InterTemperaturaComponent } from '../inter-temperatura/inter-temperatur
 })
 export class CardTempComponent implements OnInit {
   @Input() sensores:Temperatura
-  public invited:Boolean =  environment.invited;
+
   constructor(private api: ServiciosService, private interTemp: InterTemperaturaComponent) {
   }
 

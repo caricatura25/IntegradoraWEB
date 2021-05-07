@@ -13,7 +13,7 @@ import { CheckTokenService } from 'src/app/Services/check-token.service';
   styleUrls: ['./cochera.component.css']
 })
 export class CocheraComponent implements OnInit, OnDestroy {
-  public invited:Boolean =  environment.invited;
+  
   public cochera:Cochera
   ws: any;
   chat: any;

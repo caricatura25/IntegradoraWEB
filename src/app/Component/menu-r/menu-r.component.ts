@@ -15,16 +15,22 @@ import { InterMenuRComponent } from '../inter-menu-r/inter-menu-r.component';
 export class MenuRComponent implements OnInit {
   @Input() raspberries:Raspberry
   public nombre
+  public usuario: Boolean
 
   constructor(private check:CheckTokenService,public router: Router,private api: ServiciosService,private inter_menu_r: InterMenuRComponent) { }
 
   ngOnInit(): void {
     this.check.checkToken()
+    this.setEnvironmet()
   }
 
   eventoRaspberry(){
     environment.raspberry_id = this.raspberries.raspberry_id
     this.router.navigateByUrl('/raspberry/dispositivos')
+  }
+
+  setEnvironmet(){
+    this.usuario = environment.usuario
   }
 
   RaspberryID(){

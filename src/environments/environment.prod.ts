@@ -13,10 +13,11 @@ export const environment = {
   rasp_home_id: null,
   rasp_nombre: null,
 
+  /* Variables User */
+  usuario: false,
 
   /* Varaibles perdidas */
   menu_dispositivo: null,
   nombre: null,
   session: false,
-  invited: false
 };

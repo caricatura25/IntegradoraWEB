@@ -20,7 +20,7 @@ import { CheckTokenService } from 'src/app/Services/check-token.service';
   styleUrls: ['./inter-temperatura.component.css']
 })
 export class InterTemperaturaComponent implements OnInit,OnDestroy {
-  public invited:Boolean = environment.invited;
+  
   public datos:Array<Dato>
   public sensor:Temperatura
   public datosGraf: ChartDataSets[] = [];

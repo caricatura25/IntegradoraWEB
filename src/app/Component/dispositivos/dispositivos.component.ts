@@ -12,7 +12,6 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./dispositivos.component.css']
 })
 export class DispositivosComponent implements OnInit {
-  public invited:Boolean =  environment.invited;
   public pines:Array<Number>
   dispositivoForm:FormGroup; 
   request: Object
@@ -70,28 +69,6 @@ export class DispositivosComponent implements OnInit {
       tipo: ['',[Validators.required]],
       pin: ['',[Validators.required]]
     });
-  }
-
-  checkToken(){
-    console.log("Verificando Token-- CheckToken()")
-    
-    this.api.check().subscribe(data => {
-        if(data.status){
-            console.log("Autorizado User")
-        }else if(environment.invited){
-            console.log("Autorizado Invitado")
-        }else{
-            console.log("No autorizado")
-            environment.invited = false
-            this.cookies.delete("token")
-            this.router.navigateByUrl('/login');
-        }
-    }, error =>{
-        alert("No se pudo completar el registro")
-        console.log("Registro error")
-        console.log(error)
-    });
-    
   }
 
 }
