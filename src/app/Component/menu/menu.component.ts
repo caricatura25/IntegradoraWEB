@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { CheckTokenService } from 'src/app/Services/check-token.service';
 import { ServiciosService } from 'src/app/servicios.service';
 import { environment } from 'src/environments/environment.prod';
@@ -32,7 +31,7 @@ export class MenuComponent implements OnInit,OnDestroy {
       console.log(data)
       console.log(request)
       for (let i = 0; i < data.length; i++) {
-        if(data[i].tipo == "Temperatura_Humedad" || data[i].tipo == "Temperatura" || data[i].tipo == "Humedad"){
+        if(data[i].tipo == "Temperatura_Humedad"){
           this.Temp_Hum = true
         }else if(data[i].tipo == "Foco"){
           this.Foco = true

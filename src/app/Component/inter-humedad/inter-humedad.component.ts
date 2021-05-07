@@ -101,18 +101,15 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
   }, 2000);
   //this.peticiondatos()
   console.log("oninit")
-  this.HUMEDAD()
+  this.getSensoresH()
   //this.huemdadSocket()
   }
 
-  HUMEDAD(){
+  getSensoresH(){
     console.log("realizando peticion")
-    const request = {dispositivo_id: 1}
-    this.Hum.humedad(request).subscribe(data => {
-      console.log("hecho")
-      this.sensor = data
-      this.connect_ws()
-      this.peticiondatos()
+    const request = {raspberry_id: environment.raspberry_id,tipo: "Temperatura_Humedad"}
+    this.Hum.getDispositivosTipo(request).subscribe(data => {
+      console.log("hecho peticion sensoresH")
       console.log(data)
     }, error =>{
       console.log("Error peticion sensores humedad")
@@ -120,23 +117,6 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
     });
   }
 
-  connect_ws(){
-    const opciones = {reconnection:true}
-    this.ws = Ws(environment.wsURL,opciones); //ruta de mi web socket
-
-    this.ws.connect(); //me conecto al ws
-    this.chat = this.ws.subscribe("wshum") //subscribo al canal
-    this.humedadsocket()
-  }
-
-
-  humedadsocket(){
-    this.chat.emit("message", this.sensor); //Envio la informacion del sensor que quiero monitoriar1
-
-    this.chat.on("message", (data:any) =>{//recibir mesnajes que estan mandado otros clientes
-      this.humeActual = data
-    })
-  }
 
 graficaHumedad(){
 
@@ -179,7 +159,7 @@ graficaHumedad(){
   }
 
   ngOnDestroy(){
-    console.log("Saliendo del componente")
-    this.ws.close()
+    /* console.log("Saliendo del componente")
+    this.ws.close() */
   }
 }

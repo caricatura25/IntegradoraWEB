@@ -24,8 +24,8 @@ export class CheckTokenService {
           this.router.navigateByUrl('/login');
         }
     }, error =>{
-        alert("Error al validar el token --CheckTokenService")
-        console.log("Error a validar el token, error:")
+        alert("Error al validar usuario")
+        console.log("Error a validar el token")
         console.log(error)
     });
     
