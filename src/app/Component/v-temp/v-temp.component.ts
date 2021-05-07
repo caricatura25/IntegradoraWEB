@@ -11,9 +11,7 @@ import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import { NgxSpinner } from 'ngx-spinner/lib/ngx-spinner.enum';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CheckTokenService } from 'src/app/Services/check-token.service';
-import * as moment from 'moment';
-import 'moment/locale/pt-br';
-moment.locale('es');
+
 
 
 @Component({
@@ -24,7 +22,6 @@ moment.locale('es');
 export class VTempComponent implements OnInit,OnDestroy {
   opciones;
   todayDate = new Date()
-  public invited:Boolean = environment.invited;
   public datos:Array<Dato>
   public sensor:Temperatura
   public datosGraf: ChartDataSets[] = [];
