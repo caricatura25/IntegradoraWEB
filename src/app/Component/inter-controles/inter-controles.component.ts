@@ -12,12 +12,13 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./inter-controles.component.css']
 })
 export class InterControlesComponent implements OnInit {
-  
+  public usuario: Boolean
   constructor(private check: CheckTokenService,private api: ServiciosService,private cookies: CookieService,public router: Router) { }
 
   ngOnInit(): void {
     this.check.checkToken()
     this.focospeticion()
+    this.usuario = environment.usuario
   }
 
   public focos:Array<Foco>

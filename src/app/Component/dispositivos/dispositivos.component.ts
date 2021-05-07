@@ -22,6 +22,7 @@ export class DispositivosComponent implements OnInit {
   ngOnInit(): void {
     this.check.checkToken()
     this.peticionpines()
+    
   }
   peticionpines(){
     const request = {raspberry_id: environment.raspberry_id }
@@ -57,6 +58,7 @@ export class DispositivosComponent implements OnInit {
       nombre: this.dispositivoForm.get('nombre').value,
       descripcion: this.dispositivoForm.get('descripcion').value,
       tipo: this.dispositivoForm.get('tipo').value,
+      modelo: this.dispositivoForm.get('modelo').value,
       pin: y
     }
   }
@@ -67,6 +69,7 @@ export class DispositivosComponent implements OnInit {
       nombre: ['',[Validators.required]],
       descripcion: ['',[Validators.required]],
       tipo: ['',[Validators.required]],
+      modelo: ['',[Validators.required]],
       pin: ['',[Validators.required]]
     });
   }

@@ -1,6 +1,6 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar></app-nav-bar><br>
 <div class="container">
 
-    <app-card-humedad></app-card-humedad>
+    <app-card-humedad [sensoresH]='sensor' *ngFor='let sensor of sensoresH'></app-card-humedad>
 
 </div>

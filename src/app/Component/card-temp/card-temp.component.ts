@@ -8,6 +8,7 @@ import { Temperatura } from 'src/app/Interfaces/temperatura';
 import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
 import Ws from '@adonisjs/websocket-client';
+import { Dispositivo } from 'src/app/Interfaces/dispositivo';
 
 @Component({
   selector: 'app-card-temp',
@@ -15,23 +16,15 @@ import Ws from '@adonisjs/websocket-client';
   styleUrls: ['./card-temp.component.css']
 })
 export class CardTempComponent implements OnInit {
-  @Input() sensores:Temperatura
-
+  @Input() sensoresT:Dispositivo
+  public usuario:Boolean
   constructor(private api: ServiciosService, private interTemp: InterTemperaturaComponent) {
   }
 
   ngOnInit(): void {
+    this.usuario = environment.usuario
   }
-  peticionsensor(){ //Peticion para obtener la informacion del sensor de temperatura
-    console.log("realizabdo peticion sensor")
-    const request = {'dispositivo_id': 1}
-    this.api.temperatura(request).subscribe(data => {
-      console.log("hecho sensor de temperatura")
-    }, error =>{
-      console.log("Error peticion sensor Temperatura")
-      console.log(error)
-    });
-  }
+  
 
   /* connect_ws(){
     this.ws = Ws(environment.wsURL); //ruta de mi web socket

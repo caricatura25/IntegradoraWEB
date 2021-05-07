@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment.prod';
 import { ServiciosService } from 'src/app/servicios.service';
 import { InterHumedadComponent } from '../inter-humedad/inter-humedad.component';
+import { Dispositivo } from 'src/app/Interfaces/dispositivo';
 
 @Component({
   selector: 'app-card-humedad',
@@ -11,12 +12,13 @@ import { InterHumedadComponent } from '../inter-humedad/inter-humedad.component'
   styleUrls: ['./card-humedad.component.css'],
 })
 export class CardHumedadComponent implements OnInit {
-  @Input() sensores:Humedad
-  
+  @Input() sensoresH:Dispositivo
+  public usuario:Boolean
 
   constructor(private api: ServiciosService,private interHumedad: InterHumedadComponent) { }
 
   ngOnInit(): void {
+    this.usuario = environment.usuario
   } 
 
   eliminarHumedad(sensor){

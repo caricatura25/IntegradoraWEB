@@ -3,8 +3,8 @@
       <h5 class="card-title">{{focos.nombre}}</h5>
       <p class="card-text">{{focos.descripcion}}</p>
       <br>
-      <button type="button" (click)="encender()" class="btn btn-primary m-l-30">Enceder</button>
-      <button type="button"  (click)="apagar()" class="btn btn-dark m-l-30">Apagar</button>
-      <button type="button"  (click)="eliminar()"class="btn btn-danger m-l-750" >Eliminar</button>
+      <button type="button" (click)="encender()"  [disabled]="encen" class="btn btn-primary m-l-30">Enceder</button>
+      <button type="button"  (click)="apagar()" [disabled]="apaga"class="btn btn-dark m-l-30">Apagar</button>
+      <button type="button"  (click)="eliminar()" *ngIf="!usuario" class="btn btn-danger m-l-750" >Eliminar</button>
     </div>
 </div>

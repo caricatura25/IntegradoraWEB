@@ -11,6 +11,7 @@ import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import { NgxSpinner } from 'ngx-spinner/lib/ngx-spinner.enum';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CheckTokenService } from 'src/app/Services/check-token.service';
+import { Dispositivo } from 'src/app/Interfaces/dispositivo';
 
 
 
@@ -27,14 +28,26 @@ export class InterTemperaturaComponent implements OnInit,OnDestroy {
   public datosGraf_length = 0;
 
   public tempActual:String = null;
-
-
- 
+  public sensoresT:Array<Dispositivo> 
 
   constructor(private check: CheckTokenService,private api: ServiciosService, public router: Router, public cookies:CookieService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    
+    this.check.checkToken()
+    this.getSensoresT()
+  }
+
+  getSensoresT(){
+    console.log("realizando peticion")
+    const request = {raspberry_id: environment.raspberry_id, tipo: "Temperatura_Humedad"}
+    this.api.getDispositivosTipo(request).subscribe(data => {
+      console.log("hecho peticion sensoresT")
+      this.sensoresT = data
+      console.log(data)
+    }, error =>{
+      console.log("Error peticion sensores temp")
+      console.log(error)
+    });
   }
 
 
@@ -44,5 +57,4 @@ export class InterTemperaturaComponent implements OnInit,OnDestroy {
     console.log("Saliendo del componente")
     
   }
- 
 }

@@ -15,13 +15,16 @@ import { InterControlesComponent } from '../inter-controles/inter-controles.comp
 })
 export class ControlesComponent implements OnInit,OnDestroy {
   @Input() focos:Foco
+  public encen: Boolean = false
+  public apaga: Boolean = true
+  public usuario:Boolean
   
   ws: any;
   chat: any;
   constructor(private cookies: CookieService,public router: Router,private api: ServiciosService) { }
 
   ngOnInit(): void {
-    
+    this.usuario = environment.usuario
   }
 
 
@@ -30,17 +33,19 @@ export class ControlesComponent implements OnInit,OnDestroy {
   
     this.ws.connect(); //me conecto al ws
     this.chat = this.ws.subscribe("wsfoco") //subscribo al canal
-    console.log("Websocket conectado a focos!!")
+    console.log("Websocket conectado a focos")
   }
   
   encender(){
+    this.apaga =false
+    this.encen = true
     console.log("Id de foco")
     console.log(this.focos.dispositivo_id)
     if(this.focos.dispositivo_id != 7){
       const data = {estado: 0, pin: this.focos.pin,in:1}
       this.chat.emit("message", data); //Envio la informacion del foco
     }else{
-      console.log("foco externo")
+      //console.log("foco externo")
       const data = {estado: 0, pin: this.focos.pin,in:2}
       this.chat.emit("message", data); //Envio la informacion del foco
     }
@@ -48,6 +53,8 @@ export class ControlesComponent implements OnInit,OnDestroy {
   }
 
   apagar(){
+    this.encen = false
+    this.apaga = true
     if(this.focos.dispositivo_id != 7){
       const data = {estado: 1, pin: this.focos.pin,in:1}
       this.chat.emit("message", data); //Envio la informacion del foco
@@ -73,6 +80,6 @@ export class ControlesComponent implements OnInit,OnDestroy {
   
 
   ngOnDestroy(){
-    
+    this.ws.close()
   }
 }

@@ -1,21 +1,16 @@
-<div class="backgrounds">
-<br>
-<div class="row">
 <div class="col-md-12">
     <div class="card col-md-12">
-        <div class="card-body row">
+        <div class="card-body ">
             <div class="d-flex flex-row bd-highlight mb-12">
-                    <h1 class="bd-highlight">48%</h1>
+                    <h1 class="bd-highlight">Sensor {{sensoresH.nombre}}</h1>
                     <div class="d-flex .justify-content-md-center">
-                    <b style="text-indent: 10em;"> {{sensores.nombre}}</b>
-                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <p style="text-indent: 10em;">Modelo: {{ sensoresH.modelo }}</p>
                     </div>
             </div>
-            <button  type="button" class="btn btn-outline-danger offset-md-10 col-md-2" (click)="eliminarHumedad(sensores)">Eliminar sensor</button>
-            <button type="button" class="btn btn-outline-success offset-md-10 col-md-2" routerLink="raspberry/dispositivos/humedad/vhumedad">Ver Sensores humedad</button>
-            <h6 style="text-indent: 15em;"> {{sensores.descripcion}}</h6>
+        </div>
+        <div class="card-footer text-right">
+            <button  type="button" class="btn btn-outline-danger offset-md-6 col-md-2" *ngIf="!usuario">Eliminar sensor</button>&nbsp;&nbsp;
+            <button type="button" routerLink="raspberry/dispositivos/temperatura/vtemp" class="btn btn-outline-success  col-md-3">Ver Sensores Temperatura</button>
         </div>
     </div>
-</div>    
-</div>    
-</div>
+</div>    <br>

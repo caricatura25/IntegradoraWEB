@@ -19,16 +19,13 @@ export class WebSocketService {
     console.log("Socket conectado")
   } 
 
-
-  /* abrir(){
-    console.log("Abriendo Cochera")
-    const data = {estado:1,pin: this.cochera.pin}
+  emit_ws(data){
     this.chat.emit("message", data);
+    console.log("Mensaje emitido")
   }
 
-  cerrar(){
-    console.log("Cerrando Cochera")
-    const data = {estado:0,pin: this.cochera.pin}
-    this.chat.emit("message", data);
-  } */
+
+  close_ws(){
+    this.ws.close()
+  }
 }

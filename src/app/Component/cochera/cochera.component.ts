@@ -15,7 +15,10 @@ import { Dispositivo } from 'src/app/Interfaces/dispositivo';
 })
 export class CocheraComponent implements OnInit, OnDestroy {
   @Input() cocheras:Dispositivo
-
+  public encen: Boolean = false
+  public apaga: Boolean = true
+  ws:any
+  chat:any
   constructor(private check: CheckTokenService,private cookies: CookieService,public router: Router,private api: ServiciosService) { }
 
   ngOnInit(): void {
@@ -23,26 +26,30 @@ export class CocheraComponent implements OnInit, OnDestroy {
   }
 
 
-  /* connect_ws(){
+   connect_ws(){
     this.ws = Ws(environment.wsURL); //ruta de mi web socket
   
     this.ws.connect(); //me conecto al ws
     this.chat = this.ws.subscribe("wscochera") //subscribo al canal
     console.log("Websocket conectado a cochera!!")
-  } */
+  } 
 
 
-  /* abrir(){
+  abrir(){
+    this.apaga =false
+    this.encen = true
     console.log("Abriendo Cochera")
-    const data = {estado:1,pin: this.cochera.pin}
+    const data = {estado:1,pin: 1}
     this.chat.emit("message", data);
   }
 
   cerrar(){
+    this.apaga =true
+    this.encen = false
     console.log("Cerrando Cochera")
-    const data = {estado:0,pin: this.cochera.pin}
+    const data = {estado:0,pin: 1}
     this.chat.emit("message", data);
-  } */
+  } 
 
 
   ngOnDestroy(){
