@@ -22,9 +22,6 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
   
   public sensor:Humedad
   public datos:Array<Dato>
-  ws: any;
-  chat: any;
-  humedad: string
 
   public datosGraf: ChartDataSets[] = [];
   public datosGraf_length = 0;
@@ -89,7 +86,7 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
     },
   };
 
- 
+
   constructor(private check: CheckTokenService,private Hum: ServiciosService,private cookies: CookieService,public router: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
