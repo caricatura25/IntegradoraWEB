@@ -21,7 +21,7 @@ import { Dispositivo } from 'src/app/Interfaces/dispositivo';
 })
 export class InterHumedadComponent implements OnInit,OnDestroy {
   
-  public sensor:Humedad
+  public sensoresH:Array<Dispositivo>
   public datos:Array<Dato>
   public datosGraf: ChartDataSets[] = [];
   public datosGraf_length = 0;
@@ -96,20 +96,16 @@ export class InterHumedadComponent implements OnInit,OnDestroy {
     /** spinner ends after 4 seconds */
     this.spinner.hide();
   }, 2000);
-  //this.peticiondatos()
   console.log("oninit")
-  this.HUMEDAD()
-  //this.huemdadSocket()
+  this.getSensoresH()
   }
 
-  HUMEDAD(){
+  getSensoresH(){
     console.log("realizando peticion")
-    const request = {dispositivo_id: 1}
-    this.Hum.humedad(request).subscribe(data => {
-      console.log("hecho")
-      this.sensor = data
-     
-      this.peticiondatos()
+    const request = {raspberry_id: environment.raspberry_id, tipo: "Temperatura_Humedad"}
+    this.Hum.getDispositivosTipo(request).subscribe(data => {
+      console.log("hecho peticion sensoresH")
+      this.sensoresH = data
       console.log(data)
     }, error =>{
       console.log("Error peticion sensores humedad")
@@ -144,23 +140,7 @@ graficaHumedad(){
   this.datosGraf_length = this.datosGraf.length;
 
 }
-  
-  peticiondatos(){
-    console.log("realizabdo peticion")
-    const request = {dispositivo_id: this.sensor.dispositivo_id, limit: 7}
-    this.Hum.datos(request).subscribe(data => {
-      console.log("hecho")
-      this.datos = data.registros
-      console.log(data)
-      this.graficaHumedad()
-    }, error =>{
-      console.log("Error peticion datos Temperatura")
-      console.log(error)
-    });
-  }
-
   ngOnDestroy(){
     console.log("Saliendo del componente")
-   
   }
 }
