@@ -34,6 +34,7 @@ import { RasexisComponent } from './Component/rasexis/rasexis.component';
 import { InterMenuRComponent } from './Component/inter-menu-r/inter-menu-r.component';
 import { VTempComponent } from './Component/v-temp/v-temp.component';
 import { VHumedadComponent } from './Component/v-humedad/v-humedad.component';
+import { InterCocheraComponent } from './Component/inter-cochera/inter-cochera.component';
 
 
 
@@ -64,7 +65,8 @@ import { VHumedadComponent } from './Component/v-humedad/v-humedad.component';
     RasexisComponent,
     InterMenuRComponent,
     VTempComponent,
-    VHumedadComponent
+    VHumedadComponent,
+    InterCocheraComponent
   ],
   imports: [
     BrowserModule,

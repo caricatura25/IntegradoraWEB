@@ -21,6 +21,7 @@ import { RasexisComponent} from './Component/rasexis/rasexis.component';
 import { RegInvitadoComponent } from './Component/reg-invitado/reg-invitado.component';
 import { InterInvitadosComponent } from './Component/inter-invitados/inter-invitados.component';
 import { VHumedadComponent } from './Component/v-humedad/v-humedad.component';
+import { InterCocheraComponent } from './Component/inter-cochera/inter-cochera.component';
 
 
 
@@ -35,7 +36,7 @@ const routes: Routes = [
     {path:'raspberry/dispositivos/temperatura',component:InterTemperaturaComponent},
     {path:'raspberry/dispositivos/controles',component:InterControlesComponent},
     {path:'raspberry/dispositivos/humedad',component:InterHumedadComponent},
-    {path:'raspberry/dispositivos/cochera', component:CocheraComponent},
+    {path:'raspberry/dispositivos/cochera', component:InterCocheraComponent},
     {path:'raspberry/dispositivos/alarma', component:AlarmaComponent},
     {path:'agregar/dispositivo',component:DispositivosComponent},
     {path:'agregar/usuario',component:RegInvitadoComponent},
