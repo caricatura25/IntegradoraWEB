@@ -3,7 +3,7 @@ import { environment } from 'src/environments/environment.prod';
 import { ServiciosService } from 'src/app/servicios.service';
 import { Router } from '@angular/router';
 import { InterTemperaturaComponent } from '../inter-temperatura/inter-temperatura.component';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Temperatura } from 'src/app/Interfaces/temperatura';
 import { CookieService } from 'ngx-cookie-service';
 import { Dato } from 'src/app/Interfaces/dato';
@@ -15,15 +15,8 @@ import Ws from '@adonisjs/websocket-client';
   styleUrls: ['./card-temp.component.css']
 })
 export class CardTempComponent implements OnInit {
-  sensores:Temperatura
-  public tempActual:String = null;
-  public datos:Array<Dato>
-  public sensor:Temperatura
+  @Input() sensores:Temperatura
 
-  ws: any;
-  chat: any;
-
-  temperatura: string;
   constructor(private api: ServiciosService, private interTemp: InterTemperaturaComponent) {
   }
 
@@ -34,17 +27,13 @@ export class CardTempComponent implements OnInit {
     const request = {'dispositivo_id': 1}
     this.api.temperatura(request).subscribe(data => {
       console.log("hecho sensor de temperatura")
-      this.sensor = data
-      console.log(data)
-      this.connect_ws()
-      this.peticiondatos()
     }, error =>{
       console.log("Error peticion sensor Temperatura")
       console.log(error)
     });
   }
 
-  connect_ws(){
+  /* connect_ws(){
     this.ws = Ws(environment.wsURL); //ruta de mi web socket
 
     this.ws.connect(); //me conecto al ws
@@ -59,20 +48,20 @@ export class CardTempComponent implements OnInit {
     
       this.tempActual = data
     }) 
-  }     
-  peticiondatos(){ //Peticion para mostrar los ultimos 5 datos
+  }      */
+  /* peticiondatos(){ //Peticion para mostrar los ultimos 5 datos
     console.log("realizado peticion")
     const request = {dispositivo_id: this.sensor.dispositivo_id, limit: 7}
     this.api.datos(request).subscribe(data => {
       console.log("hecho")
-      this.datos = data.registros
+      
       console.log(data)
       
     }, error =>{
       console.log("Error peticion datos Temperatura")
       console.log(error)
-    });
-    
+    }); */
+
   /* eliminarTemperatura(sensor){
     const request = {dispositivo_id: sensor.dispositivo_id}
     console.log(request)
@@ -86,5 +75,5 @@ export class CardTempComponent implements OnInit {
     }); 
   } */
 }
-}
+
 
