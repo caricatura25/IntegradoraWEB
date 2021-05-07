@@ -73,7 +73,6 @@ export class ControlesComponent implements OnInit,OnDestroy {
   
 
   ngOnDestroy(){
-    console.log("Saliendo del componente")
-    this.ws.close()
+    
   }
 }
