@@ -9,6 +9,7 @@ import { MenuComponent } from './Component/menu/menu.component';
 import { CocheraComponent } from './Component/cochera/cochera.component';
 import { AlarmaComponent } from './Component/alarma/alarma.component';
 import { ControlesComponent } from './Component/controles/controles.component';
+import { VTempComponent } from './Component/v-temp/v-temp.component';
 
 import { DispositivosComponent } from './Component/dispositivos/dispositivos.component';
 import { InterHumedadComponent } from './Component/inter-humedad/inter-humedad.component';
@@ -19,6 +20,7 @@ import { RegistrorasComponent } from './Component/registroras/registroras.compon
 import { RasexisComponent} from './Component/rasexis/rasexis.component';
 import { RegInvitadoComponent } from './Component/reg-invitado/reg-invitado.component';
 import { InterInvitadosComponent } from './Component/inter-invitados/inter-invitados.component';
+
 
 
 
@@ -39,6 +41,7 @@ const routes: Routes = [
     {path:'usuarios',component:InterInvitadosComponent},
     {path:'agregar/raspberry',component:RegistrorasComponent},
     {path:'agregar/raspberry/existente',component:RasexisComponent},
+    {path:'raspberry/dispositivos/temperatura/vtemp', component:VTempComponent},
     {path:'**',component:Error404Component}
     
 ];
