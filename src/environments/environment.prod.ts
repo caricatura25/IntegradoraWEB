@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
   /* Variables API */
-  apiURL: 'http://54.146.120.131:3331/',
-  wsURL: 'ws://54.146.120.131:3331',
+  apiURL: 'http://127.0.0.1:3333/',
+  wsURL: 'ws://127.0.0.1:3333',
   
   /* Variables Home */
   home_id: null,
